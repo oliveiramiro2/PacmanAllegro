@@ -20,7 +20,9 @@ Display::Display(){
    al_clear_to_color(al_map_rgb(0,155,155));
    al_flip_display();
 
-   al_rest(5); //Tempo que a tela fica ativa (em segundos)
+   Display::drawWall();
+
+   al_rest(2); //Tempo que a tela fica ativa (em segundos)
 
    al_destroy_display(display); //Destroi a tela
 }

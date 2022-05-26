@@ -295,3 +295,25 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
+1653541101 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
+	<iostream>
+	<allegro5/allegro_native_dialog.h>
+	"Display.h"
+
+1653536327 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
+	"Wall.h"
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1653538184 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
+	<stdio.h>
+	"Display.h"
+	"Wall.h"
+
+1653541094 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\wall.h
+	<allegro5/allegro_primitives.h>
+
+1653540990 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\wall.cpp
+	<iostream>
+	"Wall.h"
+
