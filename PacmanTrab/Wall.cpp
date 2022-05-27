@@ -46,32 +46,5 @@ void Wall::drawWall(){
 
     al_draw_filled_rectangle(4*PIXEL_GAME_SIZE, 9*PIXEL_GAME_SIZE, 15*PIXEL_GAME_SIZE, 10*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
 
-//    al_draw_line(100,100,100,300, al_map_rgb(255,0,0), 40);
-//    al_draw_line(100,350,100,620, al_map_rgb(255,0,0), 40);
-
-//   al_draw_line(200,100,200,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(350,100,350,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(500,100,500,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(650,100,650,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(800,100,800,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(950,100,950,170, al_map_rgb(255,0,0), 40);
-//    al_draw_line(180,250,970,250, al_map_rgb(255,0,0), 40);
-
-//    al_draw_line(180,320,970,320, al_map_rgb(255,0,0), 40);
-//
-//    al_draw_line(1050,100,1050,300, al_map_rgb(255,0,0), 40);
-//    al_draw_line(1050,350,1050,620, al_map_rgb(255,0,0), 40);
-/*
-    for(int i=0; i<=MAX_SIZE_TABLE; i++){
-        al_draw_filled_rectangle(0*PIXEL_GAME_SIZE,0*PIXEL_GAME_SIZE,1*PIXEL_GAME_SIZE,i*PIXEL_GAME_SIZE, al_map_rgb(0,0,255));
-        al_draw_filled_rectangle((PIXEL_GAME_SIZE-1)*PIXEL_GAME_SIZE,PIXEL_GAME_SIZE*PIXEL_GAME_SIZE,i*PIXEL_GAME_SIZE,1*PIXEL_GAME_SIZE, al_map_rgb(0,0,255));
-    }
-/*
-    for(int i=MAX_SIZE_TABLE; i<0; i++){
-        al_draw_filled_rectangle(0*PIXEL_GAME_SIZE,0*PIXEL_GAME_SIZE,1*PIXEL_GAME_SIZE,i*PIXEL_GAME_SIZE, al_map_rgb(0,0,255));
-        al_draw_filled_rectangle(0*PIXEL_GAME_SIZE,0*PIXEL_GAME_SIZE,i*PIXEL_GAME_SIZE,1*PIXEL_GAME_SIZE, al_map_rgb(0,0,255));
-    }
- */
-
     al_flip_display();
 }
