@@ -26,7 +26,7 @@ Display::Display(){
 
     al_init_image_addon();
 
-    ALLEGRO_BITMAP *food = al_load_bitmap("bigFood.png");
+    ALLEGRO_BITMAP *food = al_load_bitmap("smallFood.png");
 
     al_draw_bitmap(food, 1*PIXEL_GAME_SIZE, 1*PIXEL_GAME_SIZE, NULL);
    drawWall();
