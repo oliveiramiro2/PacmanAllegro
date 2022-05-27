@@ -28,9 +28,15 @@ Display::Display(){
 
     ALLEGRO_BITMAP *food = al_load_bitmap("smallFood.png");
 
-    al_draw_bitmap(food, 1*PIXEL_GAME_SIZE, 1*PIXEL_GAME_SIZE, NULL);
-   drawWall();
-   drawSpritesFood();
+    for(int i=1; i<MAX_SIZE_TABLE-1;i++){
+        for(int j=1; j<MAX_SIZE_TABLE-1; j++){
+            al_draw_bitmap(food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, NULL);
+        }
+    }
+
+
+    drawWall();
+    drawSpritesFood();
 
    al_rest(5); //Tempo que a tela fica ativa (em segundos)
 
