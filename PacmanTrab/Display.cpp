@@ -24,10 +24,17 @@ Display::Display(){
    al_clear_to_color(al_map_rgb(255,255,255));
    al_flip_display();
 
+    al_init_image_addon();
+
+    ALLEGRO_BITMAP *food = al_load_bitmap("bigFood.png");
+
+    al_draw_bitmap(food, 1*PIXEL_GAME_SIZE, 1*PIXEL_GAME_SIZE, NULL);
    drawWall();
+   drawSpritesFood();
 
    al_rest(2); //Tempo que a tela fica ativa (em segundos)
 
+   al_destroy_bitmap(food);
    al_destroy_display(display); //Destroi a tela
 }
 
@@ -71,4 +78,8 @@ void Display::drawWall(){
     al_draw_filled_rectangle(4*PIXEL_GAME_SIZE, 9*PIXEL_GAME_SIZE, 15*PIXEL_GAME_SIZE, 10*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
 
     al_flip_display();
+}
+
+void Display::drawSpritesFood(){
+
 }

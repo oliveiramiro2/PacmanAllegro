@@ -300,15 +300,14 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
-1653612569 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
-	"Wall.h"
+1653615733 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
 
-1653538184 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
+1653612585 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
 	<stdio.h>
 	"Display.h"
-	"Wall.h"
 
 1653610261 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\wall.h
 	<allegro5/allegro_primitives.h>
