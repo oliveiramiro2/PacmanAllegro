@@ -8,6 +8,7 @@ class Display: public Wall{
 public:
     ALLEGRO_DISPLAY *display = NULL;
     Display();
+    ~Display();
 private:
 };
 
