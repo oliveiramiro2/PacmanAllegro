@@ -38,8 +38,6 @@
 		</Compiler>
 		<Unit filename="Display.cpp" />
 		<Unit filename="Display.h" />
-		<Unit filename="Wall.cpp" />
-		<Unit filename="Wall.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

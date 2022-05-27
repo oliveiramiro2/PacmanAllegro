@@ -32,7 +32,7 @@ Display::Display(){
    drawWall();
    drawSpritesFood();
 
-   al_rest(2); //Tempo que a tela fica ativa (em segundos)
+   al_rest(5); //Tempo que a tela fica ativa (em segundos)
 
    al_destroy_bitmap(food);
    al_destroy_display(display); //Destroi a tela
@@ -61,12 +61,12 @@ void Display::drawWall(){
     al_draw_filled_rectangle(14*PIXEL_GAME_SIZE, 2*PIXEL_GAME_SIZE, 15*PIXEL_GAME_SIZE, 6*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
 
 
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-4)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-5)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-7)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-8)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-9)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-10)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-11)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-12)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-13)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
-    al_draw_filled_rectangle((MAX_SIZE_TABLE-14)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-15)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-4)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-5)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-7)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-1)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-7)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-8)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-9)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-7)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-10)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-1)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-11)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-12)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-2)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-13)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-7)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
+    al_draw_filled_rectangle((MAX_SIZE_TABLE-14)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-1)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-15)*PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-6)*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
 
     al_draw_filled_rectangle(4*PIXEL_GAME_SIZE, 7*PIXEL_GAME_SIZE, 9*PIXEL_GAME_SIZE, 8*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
     al_draw_filled_rectangle(10*PIXEL_GAME_SIZE, 7*PIXEL_GAME_SIZE, 15*PIXEL_GAME_SIZE, 8*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
