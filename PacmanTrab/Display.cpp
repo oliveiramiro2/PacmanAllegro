@@ -1,5 +1,4 @@
 #include <iostream>
-#include <allegro5/allegro_native_dialog.h>
 #include "Display.h"
 
 #define DIMENSIONS_SCREEN_PACMAN 665
@@ -24,23 +23,12 @@ Display::Display(){
    al_clear_to_color(al_map_rgb(255,255,255));
    al_flip_display();
 
-    al_init_image_addon();
+   drawSpritesFood(); // desenha comidas
+   drawWall(); // desenha paredes
 
-    ALLEGRO_BITMAP *food = al_load_bitmap("smallFood.png");
+   al_rest(50000); //Tempo que a tela fica ativa (em segundos)
 
-    for(int i=1; i<MAX_SIZE_TABLE-1;i++){
-        for(int j=1; j<MAX_SIZE_TABLE-1; j++){
-            al_draw_bitmap(food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, NULL);
-        }
-    }
-
-
-    drawWall();
-    drawSpritesFood();
-
-   al_rest(5); //Tempo que a tela fica ativa (em segundos)
-
-   al_destroy_bitmap(food);
+   al_destroy_bitmap(Display::food); //Destroi a comida
    al_destroy_display(display); //Destroi a tela
 }
 
@@ -88,4 +76,14 @@ void Display::drawWall(){
 
 void Display::drawSpritesFood(){
 
+    al_init_image_addon();
+    Display::food = al_load_bitmap("smallFood.png");
+
+    for(int i=1; i<MAX_SIZE_TABLE-1;i++){
+        for(int j=1; j<MAX_SIZE_TABLE-1; j++){
+            al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, NULL);
+        }
+    }
+
+    al_flip_display();
 }
