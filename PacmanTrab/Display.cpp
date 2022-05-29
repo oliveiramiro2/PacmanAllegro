@@ -26,7 +26,7 @@ Display::Display(){
    drawSpritesFood(); // desenha comidas
    drawWall(); // desenha paredes
 
-   al_rest(50000); //Tempo que a tela fica ativa (em segundos)
+   al_rest(10); //Tempo que a tela fica ativa (em segundos)
 
    al_destroy_bitmap(Display::food); //Destroi a comida
    al_destroy_display(display); //Destroi a tela

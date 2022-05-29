@@ -38,10 +38,10 @@
 		</Compiler>
 		<Unit filename="Display.cpp" />
 		<Unit filename="Display.h" />
-		<Unit filename="StartUp.cpp">
+		<Unit filename="Game.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="StartUp.h">
+		<Unit filename="Game.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
