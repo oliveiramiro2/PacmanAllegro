@@ -9,7 +9,7 @@ public:
     void loopGame();
     ALLEGRO_TIMER *time = NULL;
     ALLEGRO_EVENT_QUEUE *queueEvent = NULL;
-    ALLEGRO_EVENT *events= NULL;
+    ALLEGRO_EVENT events;
     Game();
     ~Game();
 private:
