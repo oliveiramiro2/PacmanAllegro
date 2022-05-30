@@ -6,6 +6,8 @@ class Game : public Display{
 public:
     void setGaming(bool value);
     bool getGaming();
+    void setDraw(bool value);
+    bool getDraw();
     void loopGame();
     ALLEGRO_TIMER *time = NULL;
     ALLEGRO_EVENT_QUEUE *queueEvent = NULL;
@@ -14,6 +16,7 @@ public:
     ~Game();
 private:
     bool gaming = false;
+    bool draw = false;
 };
 
 #endif // GAME_H_INCLUDED

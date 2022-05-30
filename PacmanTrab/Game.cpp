@@ -34,9 +34,7 @@ Game::Game() : Display(){
 }
 
 void Game::loopGame(){
-    Display::drawSpritesFood();
-    Display::drawWall();
-    al_flip_display();
+    Game::setDraw(true);
     while(Game::getGaming()){
         al_wait_for_event(queueEvent, &events);
 
@@ -48,12 +46,17 @@ void Game::loopGame(){
                 Display::drawWall();
                 al_flip_display();
             }
+        }
 
-            if(al_is_event_queue_empty(queueEvent)){
-                Display::drawSpritesFood();
-                Display::drawWall();
-                al_flip_display();
-            }
+        if(Game::events.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+            Game::setGaming(false);
+        }
+
+        if(al_is_event_queue_empty(queueEvent) && Game::getDraw()){
+            Display::drawSpritesFood();
+            Display::drawWall();
+            al_flip_display();
+            Game::setDraw(false);
         }
 
     }
@@ -65,4 +68,12 @@ void Game::setGaming(bool value){
 
 bool Game::getGaming(){
     return Game::gaming;
+}
+
+void Game::setDraw(bool value){
+    Game::draw = value;
+}
+
+bool Game::getDraw(){
+    return Game::draw;
 }
