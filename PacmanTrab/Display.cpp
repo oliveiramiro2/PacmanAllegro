@@ -19,9 +19,8 @@ Display::Display(){
       al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o display!",
                                  NULL, ALLEGRO_MESSAGEBOX_ERROR);
    }
-
    al_clear_to_color(al_map_rgb(255,255,255));
-   al_flip_display();
+
 }
 
 void Display::drawWall(){
@@ -70,10 +69,10 @@ void Display::drawSpritesFood(int sprite){
     al_init_image_addon();
     if(sprite == 1){
         Display::food = al_load_bitmap("smallFood.png");
-        cout << "saiu 1 " << endl;}
+    }
     if(sprite == 2){
         Display::food = al_load_bitmap("bigFood.png");
-        cout << "saiu 2 " << endl;}
+    }
 
     for(int i=1; i<MAX_SIZE_TABLE-1;i++){
         for(int j=1; j<MAX_SIZE_TABLE-1; j++){

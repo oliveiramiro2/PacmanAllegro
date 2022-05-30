@@ -30,15 +30,18 @@ Game::Game() : Display(){
     al_destroy_event_queue(queueEvent); // Destroi fila de eventos
     al_destroy_bitmap(Display::food); //Destroi a comida
     al_destroy_display(Display::display); //Destroi a tela
+    al_destroy_bitmap(Display::food); //Destroi a comida
 
 }
 
 void Game::loopGame(){
     Game::setDraw(true);
     while(Game::getGaming()){
+
         al_wait_for_event(queueEvent, &events);
 
         if(Game::events.type == ALLEGRO_EVENT_KEY_DOWN){
+
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setGaming(false);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
@@ -49,10 +52,12 @@ void Game::loopGame(){
         }
 
         if(Game::events.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+
             Game::setGaming(false);
         }
 
         if(al_is_event_queue_empty(queueEvent) && Game::getDraw()){
+
             Display::drawSpritesFood(1);
             Display::drawWall();
             al_flip_display();
@@ -60,6 +65,8 @@ void Game::loopGame(){
         }
 
         if(count == 30 || count == 60){
+
+            al_clear_to_color(al_map_rgb(255,255,255));
             if(count == 30){
                 Display::drawSpritesFood(2);
                 Display::drawWall();
@@ -71,9 +78,7 @@ void Game::loopGame(){
                 al_flip_display();
                 Game::count = 0;
             }
-            cout << count << endl;
         }
-
         Game::count++;
     }
 }
