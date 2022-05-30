@@ -22,14 +22,6 @@ Display::Display(){
 
    al_clear_to_color(al_map_rgb(255,255,255));
    al_flip_display();
-
-   drawSpritesFood(); // desenha comidas
-   drawWall(); // desenha paredes
-
-   al_rest(10); //Tempo que a tela fica ativa (em segundos)
-
-   al_destroy_bitmap(Display::food); //Destroi a comida
-   al_destroy_display(display); //Destroi a tela
 }
 
 void Display::drawWall(){
@@ -81,7 +73,7 @@ void Display::drawSpritesFood(){
 
     for(int i=1; i<MAX_SIZE_TABLE-1;i++){
         for(int j=1; j<MAX_SIZE_TABLE-1; j++){
-            al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, NULL);
+            al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, ALLEGRO_FLIP_VERTICAL);
         }
     }
 

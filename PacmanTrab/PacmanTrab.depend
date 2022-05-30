@@ -295,7 +295,7 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
-1653767595 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
+1653871801 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
 	<iostream>
 	"Display.h"
 
@@ -305,7 +305,7 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1653799420 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
+1653874102 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
 	<stdio.h>
 	"Game.h"
 
@@ -316,7 +316,7 @@
 	<iostream>
 	"Wall.h"
 
-1653799995 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
+1653870954 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
 	"Display.h"
 
 1653800067 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
