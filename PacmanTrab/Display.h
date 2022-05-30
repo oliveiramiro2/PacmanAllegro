@@ -12,7 +12,6 @@ public:
     void drawWall();
     void drawSpritesFood();
     Display();
-    ~Display();
 private:
 };
 

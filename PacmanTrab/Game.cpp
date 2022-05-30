@@ -19,13 +19,13 @@ Game::Game() : Display(){
     //install
     al_install_keyboard();
     al_install_mouse();
-    al_start_timer(Game::time);
+    //al_start_timer(Game::time);
 
     Game::setGaming(true);
     Game::loopGame();
 
     //destoy
-    al_destroy_event_queue(Game::events);
+    al_destroy_event_queue(Game::queueEvent); // Destroi fila de eventos
     al_destroy_bitmap(Display::food); //Destroi a comida
     al_destroy_display(Display::display); //Destroi a tela
 
@@ -33,19 +33,19 @@ Game::Game() : Display(){
 
 void Game::loopGame(){
     while(Game::getGaming()){
-        al_wait_for_event(Game::queueEvent, &Game::events);
+        al_wait_for_event(Game::queueEvent, events);
 
-        if(Game::events.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(Game::events.keyboard.keycode == ALLEGRO_KEY_SPACE){
+        if(Game::events->type == ALLEGRO_EVENT_KEY_DOWN){
+            if(Game::events->keyboard.keycode == ALLEGRO_KEY_SPACE){
                 Game::setGaming(false);
-            }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
-                Display.drawSpritesFood();
+            }else if(Game::events->type == ALLEGRO_EVENT_TIMER){
+                Display::drawSpritesFood();
                 Display::drawWall();
                 al_flip_display();
             }
 
             if(al_is_event_queue_empty(Game::queueEvent)){
-                Display.drawSpritesFood();
+                Display::drawSpritesFood();
                 Display::drawWall();
                 al_flip_display();
             }
