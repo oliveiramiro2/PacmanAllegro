@@ -63,13 +63,17 @@ void Display::drawWall(){
 
     al_draw_filled_rectangle(4*PIXEL_GAME_SIZE, 9*PIXEL_GAME_SIZE, 15*PIXEL_GAME_SIZE, 10*PIXEL_GAME_SIZE, al_map_rgb(255,0,0));
 
-    al_flip_display();
 }
 
-void Display::drawSpritesFood(){
+void Display::drawSpritesFood(int sprite){
 
     al_init_image_addon();
-    Display::food = al_load_bitmap("smallFood.png");
+    if(sprite == 1){
+        Display::food = al_load_bitmap("smallFood.png");
+        cout << "saiu 1 " << endl;}
+    if(sprite == 2){
+        Display::food = al_load_bitmap("bigFood.png");
+        cout << "saiu 2 " << endl;}
 
     for(int i=1; i<MAX_SIZE_TABLE-1;i++){
         for(int j=1; j<MAX_SIZE_TABLE-1; j++){
@@ -77,5 +81,4 @@ void Display::drawSpritesFood(){
         }
     }
 
-    al_flip_display();
 }

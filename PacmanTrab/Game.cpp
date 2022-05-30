@@ -42,7 +42,7 @@ void Game::loopGame(){
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setGaming(false);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
-                Display::drawSpritesFood();
+                Display::drawSpritesFood(1);
                 Display::drawWall();
                 al_flip_display();
             }
@@ -53,12 +53,28 @@ void Game::loopGame(){
         }
 
         if(al_is_event_queue_empty(queueEvent) && Game::getDraw()){
-            Display::drawSpritesFood();
+            Display::drawSpritesFood(1);
             Display::drawWall();
             al_flip_display();
             Game::setDraw(false);
         }
 
+        if(count == 30 || count == 60){
+            if(count == 30){
+                Display::drawSpritesFood(2);
+                Display::drawWall();
+                al_flip_display();
+            }
+            if(count == 60){
+                Display::drawSpritesFood(1);
+                Display::drawWall();
+                al_flip_display();
+                Game::count = 0;
+            }
+            cout << count << endl;
+        }
+
+        Game::count++;
     }
 }
 

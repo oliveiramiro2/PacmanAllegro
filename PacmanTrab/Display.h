@@ -10,7 +10,7 @@ public:
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
     void drawWall();
-    void drawSpritesFood();
+    void drawSpritesFood(int sprite);
     Display();
 private:
 };

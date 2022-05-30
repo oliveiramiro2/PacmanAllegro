@@ -9,6 +9,7 @@ public:
     void setDraw(bool value);
     bool getDraw();
     void loopGame();
+    int count = 0;
     ALLEGRO_TIMER *time = NULL;
     ALLEGRO_EVENT_QUEUE *queueEvent = NULL;
     ALLEGRO_EVENT events;
