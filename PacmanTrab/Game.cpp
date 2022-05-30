@@ -41,7 +41,7 @@ void Game::loopGame(){
         al_wait_for_event(queueEvent, &events);
 
         if(Game::events.type == ALLEGRO_EVENT_KEY_DOWN){
-            if(Game::events.keyboard.keycode == ALLEGRO_KEY_SPACE){
+            if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setGaming(false);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
                 Display::drawSpritesFood();
