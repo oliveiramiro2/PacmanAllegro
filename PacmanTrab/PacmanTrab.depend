@@ -295,20 +295,20 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
-1653985633 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
+1653988437 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
 	<iostream>
 	"Display.h"
 
-1653985016 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
+1653987992 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
+	"Entities.h"
 
-1653932347 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
+1653987308 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
 	<stdio.h>
 	"Game.h"
-	"Display.h"
 
 1653610261 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\wall.h
 	<allegro5/allegro_primitives.h>
@@ -317,11 +317,16 @@
 	<iostream>
 	"Wall.h"
 
-1653984144 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
+1653987984 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
 	"Display.h"
 
-1653985141 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
+1653988934 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
 	<iostream>
 	"Game.h"
-	"Display.h"
+
+1653987907 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\entities.cpp
+	<iostream>
+	"Entities.h"
+
+1653987636 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\entities.h
 

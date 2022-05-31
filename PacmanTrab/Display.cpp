@@ -19,9 +19,14 @@ Display::Display(){
       al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o display!",
                                  NULL, ALLEGRO_MESSAGEBOX_ERROR);
     }
+
+    // iniciando sprites e setando a cor branca na tela
     al_init_image_addon();
     al_clear_to_color(al_map_rgb(255,255,255));
 
+    // setando a posicao inicial do pacman no centro da tela
+    Entities::setPosX(9*PIXEL_GAME_SIZE-6);
+    Entities::setPosY(10*PIXEL_GAME_SIZE-6);
 }
 
 void Display::drawWall(){
@@ -111,8 +116,12 @@ void Display::drawSpritesFood(int sprite){
 
 }
 
-void Display::drawPacman(){
-    Display::pacman = al_load_bitmap("./assets/pacman1.png");
+void Display::drawPacman(int sprite){
+    if(sprite == 1){
+        Display::pacman = al_load_bitmap("./assets/pacman1.png");
+    }else{
+        Display::pacman = al_load_bitmap("./assets/pacman2.png");
+    }
 
-    al_draw_bitmap(Display::pacman, 9*PIXEL_GAME_SIZE-6, 10*PIXEL_GAME_SIZE-6, ALLEGRO_FLIP_VERTICAL);
+    al_draw_bitmap(Display::pacman, Entities::getPosX(), Entities::getPosY(), ALLEGRO_FLIP_VERTICAL);
 }

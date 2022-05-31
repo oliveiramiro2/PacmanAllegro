@@ -1,10 +1,10 @@
 #include <iostream>
 #include "Game.h"
-#include "Display.h"
 
 using namespace std;
 
 #define FPS 60
+#define SPEED 1
 
 Game::Game() : Display(){
     queueEvent = al_create_event_queue();
@@ -29,6 +29,7 @@ Game::Game() : Display(){
     //destoy
     al_destroy_event_queue(queueEvent); // Destroi fila de eventos
     al_destroy_bitmap(Display::food); //Destroi a comida
+    al_destroy_bitmap(Display::pacman); //Destroi o pacman
     al_destroy_display(Display::display); //Destroi a tela
     al_destroy_bitmap(Display::food); //Destroi a comida
 
@@ -60,28 +61,30 @@ void Game::loopGame(){
 
             Display::drawSpritesFood(1);
             Display::drawWall();
-            Display::drawPacman();
+            Display::drawPacman(1);
             al_flip_display();
             Game::setDraw(false);
         }
 
-        if(count == 30 || count == 60){
+        if(count == 20 || count == 40){
 
             al_clear_to_color(al_map_rgb(255,255,255));
-            if(count == 30){
+            if(count == 20){
                 Display::drawSpritesFood(2);
                 Display::drawWall();
-                Display::drawPacman();
+                Display::drawPacman(2);
                 al_flip_display();
             }
-            if(count == 60){
+            if(count == 40){
                 Display::drawSpritesFood(1);
                 Display::drawWall();
-                Display::drawPacman();
+                Display::drawPacman(1);
                 al_flip_display();
                 Game::count = 0;
             }
         }
+        Entities::setPosX(Entities::getPosX() + SPEED);
+
         Game::count++;
     }
 }
