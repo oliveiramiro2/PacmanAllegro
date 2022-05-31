@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Entities.h"
 
+
+// controle de posicao para movimento
 void Entities::setPosX(float value){
     Entities::posX = value;
 }

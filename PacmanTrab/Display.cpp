@@ -8,6 +8,7 @@
 using namespace std;
 
 Display::Display(){
+    // iniciando e verificando a tela
     if(!al_init()) {                                                                                    // verifica se a allegro iniciou normalmente
       al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o Allegro",
                                  NULL, ALLEGRO_MESSAGEBOX_ERROR);
@@ -99,6 +100,7 @@ void Display::drawWall(){
 
 }
 
+// desenhando as comidas
 void Display::drawSpritesFood(int sprite){
 
     if(sprite == 1){
@@ -116,6 +118,7 @@ void Display::drawSpritesFood(int sprite){
 
 }
 
+// desenhando o Pacman
 void Display::drawPacman(int sprite){
     if(sprite == 1){
         Display::pacman = al_load_bitmap("./assets/pacman1.png");
