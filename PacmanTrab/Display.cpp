@@ -18,8 +18,9 @@ Display::Display(){
     if(!display) {
       al_show_native_message_box(display, "Error", "Error", "Falha ao iniciar o display!",
                                  NULL, ALLEGRO_MESSAGEBOX_ERROR);
-   }
-   al_clear_to_color(al_map_rgb(255,255,255));
+    }
+    al_init_image_addon();
+    al_clear_to_color(al_map_rgb(255,255,255));
 
 }
 
@@ -95,12 +96,11 @@ void Display::drawWall(){
 
 void Display::drawSpritesFood(int sprite){
 
-    al_init_image_addon();
     if(sprite == 1){
-        Display::food = al_load_bitmap("smallFood.png");
+        Display::food = al_load_bitmap("./assets/smallFood.png");
     }
     if(sprite == 2){
-        Display::food = al_load_bitmap("bigFood.png");
+        Display::food = al_load_bitmap("./assets/bigFood.png");
     }
 
     for(int i=1; i<MAX_SIZE_TABLE-1;i++){
@@ -109,4 +109,10 @@ void Display::drawSpritesFood(int sprite){
         }
     }
 
+}
+
+void Display::drawPacman(){
+    Display::pacman = al_load_bitmap("./assets/pacman1.png");
+
+    al_draw_bitmap(Display::pacman, 9*PIXEL_GAME_SIZE-6, 10*PIXEL_GAME_SIZE-6, ALLEGRO_FLIP_VERTICAL);
 }

@@ -60,6 +60,7 @@ void Game::loopGame(){
 
             Display::drawSpritesFood(1);
             Display::drawWall();
+            Display::drawPacman();
             al_flip_display();
             Game::setDraw(false);
         }
@@ -70,11 +71,13 @@ void Game::loopGame(){
             if(count == 30){
                 Display::drawSpritesFood(2);
                 Display::drawWall();
+                Display::drawPacman();
                 al_flip_display();
             }
             if(count == 60){
                 Display::drawSpritesFood(1);
                 Display::drawWall();
+                Display::drawPacman();
                 al_flip_display();
                 Game::count = 0;
             }

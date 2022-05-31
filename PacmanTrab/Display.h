@@ -9,6 +9,8 @@ class Display{
 public:
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
+    ALLEGRO_BITMAP *pacman = NULL;
+    void drawPacman();
     void drawWall();
     void drawSpritesFood(int sprite);
     Display();
