@@ -25,9 +25,10 @@ Display::Display(){
     al_init_image_addon();
     al_clear_to_color(al_map_rgb(255,255,255));
 
-    // setando a posicao inicial do pacman no centro da tela
+    // setando a posicao inicial do pacman no centro da tela e setando seu movimento a direita
     Entities::setPosX(9*PIXEL_GAME_SIZE-6);
     Entities::setPosY(10*PIXEL_GAME_SIZE-6);
+    Entities::setPositionMove(2);
 }
 
 void Display::drawWall(){

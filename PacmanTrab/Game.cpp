@@ -3,7 +3,7 @@
 
 using namespace std;
 
-#define FPS 60
+#define FPS 65
 #define SPEED 1
 
 Game::Game() : Display(){
@@ -46,6 +46,14 @@ void Game::loopGame(){
             // tecla Esc fecha o jogo
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setPlaying(false);
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_DOWN){
+                Entities::setPositionMove(3);
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_RIGHT){
+                Entities::setPositionMove(2);
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_UP){
+                Entities::setPositionMove(1);
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_LEFT){
+                Entities::setPositionMove(4);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
                 Display::drawSpritesFood(1);
                 Display::drawWall();
@@ -88,8 +96,15 @@ void Game::loopGame(){
             }
         }
 
-        // movimentado o pacman 60 pixeis por segundo
-        Entities::setPosX(Entities::getPosX() + SPEED);
+        // movimentado o pacman 65 pixeis por segundo
+        if(Entities::getPositionMove() == 1)
+            Entities::setPosY(Entities::getPosY() - SPEED);
+        else if(Entities::getPositionMove() == 2)
+            Entities::setPosX(Entities::getPosX() + SPEED);
+        else if(Entities::getPositionMove() == 3)
+            Entities::setPosY(Entities::getPosY() + SPEED);
+        else
+            Entities::setPosX(Entities::getPosX() - SPEED);
 
         // contador para desenhos na tela
         Game::count++;

@@ -38,6 +38,12 @@
 		</Compiler>
 		<Unit filename="Display.cpp" />
 		<Unit filename="Display.h" />
+		<Unit filename="Entities.cpp" />
+		<Unit filename="Entities.h">
+			<Option compile="1" />
+			<Option link="1" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="main.cpp" />
