@@ -4,8 +4,8 @@
 
 class Game : public Display{
 public:
-    void setGaming(bool value);
-    bool getGaming();
+    void setPlaying(bool value);
+    bool getPlaying();
     void setDraw(bool value);
     bool getDraw();
     void loopGame();
@@ -16,7 +16,7 @@ public:
     Game();
     ~Game();
 private:
-    bool gaming = false;
+    bool playing = false;
     bool draw = false;
 };
 

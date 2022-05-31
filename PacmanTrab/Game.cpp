@@ -23,7 +23,7 @@ Game::Game() : Display(){
     al_register_event_source(queueEvent, al_get_mouse_event_source());
 
 
-    Game::setGaming(true);
+    Game::setPlaying(true);
     Game::loopGame();
 
     //destoy
@@ -36,14 +36,14 @@ Game::Game() : Display(){
 
 void Game::loopGame(){
     Game::setDraw(true);
-    while(Game::getGaming()){
+    while(Game::getPlaying()){
 
         al_wait_for_event(queueEvent, &events);
 
         if(Game::events.type == ALLEGRO_EVENT_KEY_DOWN){
 
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
-                Game::setGaming(false);
+                Game::setPlaying(false);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
                 Display::drawSpritesFood(1);
                 Display::drawWall();
@@ -53,7 +53,7 @@ void Game::loopGame(){
 
         if(Game::events.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
 
-            Game::setGaming(false);
+            Game::setPlaying(false);
         }
 
         if(al_is_event_queue_empty(queueEvent) && Game::getDraw()){
@@ -83,12 +83,12 @@ void Game::loopGame(){
     }
 }
 
-void Game::setGaming(bool value){
-    Game::gaming = value;
+void Game::setPlaying(bool value){
+    Game::playing = value;
 }
 
-bool Game::getGaming(){
-    return Game::gaming;
+bool Game::getPlaying(){
+    return Game::playing;
 }
 
 void Game::setDraw(bool value){
