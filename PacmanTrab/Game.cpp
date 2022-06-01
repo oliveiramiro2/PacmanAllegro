@@ -72,7 +72,7 @@ void Game::loopGame(){
 
             Display::drawSpritesFood(1);
             Display::drawWall();
-            Display::drawPacman(1);
+            Display::drawPacman(1, Game::getPositionMove());
             al_flip_display();
             Game::setDraw(false);
         }
@@ -84,13 +84,13 @@ void Game::loopGame(){
             if(count == 20){
                 Display::drawSpritesFood(2);
                 Display::drawWall();
-                Display::drawPacman(2);
+                Display::drawPacman(2, Game::getPositionMove());
                 al_flip_display();
             }
             if(count == 40){
                 Display::drawSpritesFood(1);
                 Display::drawWall();
-                Display::drawPacman(1);
+                Display::drawPacman(1, Game::getPositionMove());
                 al_flip_display();
                 Game::count = 0;
             }
@@ -106,6 +106,8 @@ void Game::loopGame(){
         else
             Entities::setPosX(Entities::getPosX() - SPEED);
 
+
+        //Display::drawPacman(1);
         // contador para desenhos na tela
         Game::count++;
     }

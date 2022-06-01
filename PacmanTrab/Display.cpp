@@ -120,11 +120,36 @@ void Display::drawSpritesFood(int sprite){
 }
 
 // desenhando o Pacman
-void Display::drawPacman(int sprite){
-    if(sprite == 1){
-        Display::pacman = al_load_bitmap("./assets/pacman1.png");
+void Display::drawPacman(int sprite, int move){
+
+    if(move == 1){
+
+        if(sprite == 1){
+            Display::pacman = al_load_bitmap("./assets/pacmanDown1.png");
+        }else{
+            Display::pacman = al_load_bitmap("./assets/pacmanDown2.png");
+        }
+    }else if(move == 2){
+
+        if(sprite == 1){
+            Display::pacman = al_load_bitmap("./assets/pacmanRight1.png");
+        }else{
+            Display::pacman = al_load_bitmap("./assets/pacmanRight2.png");
+        }
+    }else if(move == 3){
+
+        if(sprite == 1){
+            Display::pacman = al_load_bitmap("./assets/pacmanUp1.png");
+        }else{
+            Display::pacman = al_load_bitmap("./assets/pacmanUp2.png");
+        }
     }else{
-        Display::pacman = al_load_bitmap("./assets/pacman2.png");
+
+        if(sprite == 1){
+            Display::pacman = al_load_bitmap("./assets/pacmanLeft1.png");
+        }else{
+            Display::pacman = al_load_bitmap("./assets/pacmanLeft2.png");
+        }
     }
 
     al_draw_bitmap(Display::pacman, Entities::getPosX(), Entities::getPosY(), ALLEGRO_FLIP_VERTICAL);

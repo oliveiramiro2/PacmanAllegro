@@ -11,7 +11,7 @@ public:
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
     ALLEGRO_BITMAP *pacman = NULL;
-    void drawPacman(int sprite);
+    void drawPacman(int sprite, int move);
     void drawWall();
     void drawSpritesFood(int sprite);
     Display();
