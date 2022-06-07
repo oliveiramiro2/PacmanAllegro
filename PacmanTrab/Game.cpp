@@ -120,23 +120,30 @@ void Game::loopGame(){
 // funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
 bool Game::checkNextSQM(){
     if(Entities::getPositionMove() == 1){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE-1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1)
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
+            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
             return true;
-        else
+        }else
             return false;
     }else if(Entities::getPositionMove() == 2){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE+1] == 1)
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE+1] == 1){
+            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE+1 << endl;
             return true;
+        }
         else
             return false;
     }else if(Entities::getPositionMove() == 3){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE+1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1)
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE+1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
+            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE+1 << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
             return true;
+        }
         else
             return false;
     }else{
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE-1] == 1)
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
+            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
             return true;
+        }
         else
             return false;
     }

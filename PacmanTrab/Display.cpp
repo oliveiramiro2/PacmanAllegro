@@ -152,5 +152,5 @@ void Display::drawPacman(int sprite, int move){
         }
     }
 
-    al_draw_bitmap(Display::pacman, Entities::getPosX(), Entities::getPosY(), ALLEGRO_FLIP_VERTICAL);
+    al_draw_bitmap(Display::pacman, Entities::getPosX()-6, Entities::getPosY()-6, ALLEGRO_FLIP_VERTICAL);
 }
