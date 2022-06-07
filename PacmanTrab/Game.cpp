@@ -1,10 +1,12 @@
 #include <iostream>
+#include <stdlib.h>
 #include "Game.h"
 
 using namespace std;
 
 #define FPS 65
 #define SPEED 1
+#define PIXEL_GAME_SIZE 35
 
 Game::Game() : Display(){
     queueEvent = al_create_event_queue();
@@ -46,13 +48,13 @@ void Game::loopGame(){
             // tecla Esc fecha o jogo
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setPlaying(false);
-            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_DOWN){
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_DOWN){ // baixo
                 Entities::setPositionMove(3);
-            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_RIGHT){
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_RIGHT){ // direita
                 Entities::setPositionMove(2);
-            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_UP){
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_UP){ // cima
                 Entities::setPositionMove(1);
-            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_LEFT){
+            }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_LEFT){ // esquerda
                 Entities::setPositionMove(4);
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
                 Display::drawSpritesFood(1);
@@ -80,6 +82,7 @@ void Game::loopGame(){
         // desenhando o movimento da comida e do pacman 3x por segunda
         if(count == 20 || count == 40){
 
+            // colocar um desenho em cima do outro gasta mais recurso da maquina?
             al_clear_to_color(al_map_rgb(255,255,255));
             if(count == 20){
                 Display::drawSpritesFood(2);
@@ -97,19 +100,45 @@ void Game::loopGame(){
         }
 
         // movimentado o pacman 65 pixeis por segundo
-        if(Entities::getPositionMove() == 1)
-            Entities::setPosY(Entities::getPosY() - SPEED);
-        else if(Entities::getPositionMove() == 2)
-            Entities::setPosX(Entities::getPosX() + SPEED);
-        else if(Entities::getPositionMove() == 3)
-            Entities::setPosY(Entities::getPosY() + SPEED);
-        else
-            Entities::setPosX(Entities::getPosX() - SPEED);
+        if(Game::checkNextSQM()){ // checando disponibilidade
+            if(Entities::getPositionMove() == 1)
+                Entities::setPosY(Entities::getPosY() - SPEED);
+            else if(Entities::getPositionMove() == 2)
+                Entities::setPosX(Entities::getPosX() + SPEED);
+            else if(Entities::getPositionMove() == 3)
+                Entities::setPosY(Entities::getPosY() + SPEED);
+            else
+                Entities::setPosX(Entities::getPosX() - SPEED);
+        }
 
 
-        //Display::drawPacman(1);
         // contador para desenhos na tela
         Game::count++;
+    }
+}
+
+// funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
+bool Game::checkNextSQM(){
+    if(Entities::getPositionMove() == 1){
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE-1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1)
+            return true;
+        else
+            return false;
+    }else if(Entities::getPositionMove() == 2){
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE+1] == 1)
+            return true;
+        else
+            return false;
+    }else if(Entities::getPositionMove() == 3){
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE+1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1)
+            return true;
+        else
+            return false;
+    }else{
+        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE-1] == 1)
+            return true;
+        else
+            return false;
     }
 }
 

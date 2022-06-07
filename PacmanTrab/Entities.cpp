@@ -3,19 +3,19 @@
 
 
 // controle de posicao para movimento
-void Entities::setPosX(float value){
+void Entities::setPosX(int value){
     Entities::posX = value;
 }
 
-void Entities::setPosY(float value){
+void Entities::setPosY(int value){
     Entities::posY = value;
 }
 
-float Entities::getPosX(){
+int Entities::getPosX(){
     return posX;
 }
 
-float Entities::getPosY(){
+int Entities::getPosY(){
     return posY;
 }
 

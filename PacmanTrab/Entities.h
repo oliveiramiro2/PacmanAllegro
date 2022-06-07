@@ -3,14 +3,14 @@
 
 class Entities{
 public:
-    void setPosX(float value);
-    void setPosY(float value);
+    void setPosX(int value);
+    void setPosY(int value);
     void setPositionMove(int value);
     int getPositionMove();
-    float getPosX();
-    float getPosY();
+    int getPosX();
+    int getPosY();
 private:
-    float posX, posY;
+    int posX, posY;
     int positionMove;
 };
 

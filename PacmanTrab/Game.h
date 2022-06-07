@@ -1,8 +1,9 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 #include "Display.h"
+#include "Rules.h"
 
-class Game : public Display{
+class Game : public Display, public Rules{
 public:
     void setPlaying(bool value);
     bool getPlaying();
@@ -18,6 +19,7 @@ public:
 private:
     bool playing = false;
     bool draw = false;
+    bool checkNextSQM();
 };
 
 #endif // GAME_H_INCLUDED
