@@ -11,6 +11,7 @@ public:
     bool getDraw();
     void loopGame();
     int count = 0;
+    int nextMove = 2;
     ALLEGRO_TIMER *time = NULL;
     ALLEGRO_EVENT_QUEUE *queueEvent = NULL;
     ALLEGRO_EVENT events;
@@ -19,7 +20,7 @@ public:
 private:
     bool playing = false;
     bool draw = false;
-    bool checkNextSQM();
+    bool checkNextSQM(int action, int checkNextMove = 0);
 };
 
 #endif // GAME_H_INCLUDED

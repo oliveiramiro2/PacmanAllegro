@@ -49,15 +49,26 @@ void Game::loopGame(){
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setPlaying(false);
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_DOWN){ // baixo
-                Entities::setPositionMove(3);
+                if(Game::checkNextSQM(1, 3))
+                    Entities::setPositionMove(3);
+                else
+                    nextMove = 3;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_RIGHT){ // direita
-                Entities::setPositionMove(2);
+                if(Game::checkNextSQM(1, 2))
+                    Entities::setPositionMove(2);
+                else
+                    nextMove = 2;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_UP){ // cima
-                Entities::setPositionMove(1);
+                if(Game::checkNextSQM(1, 1))
+                    Entities::setPositionMove(1);
+                else
+                    nextMove = 1;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_LEFT){ // esquerda
-                Entities::setPositionMove(4);
+                if(Game::checkNextSQM(1, 4))
+                    Entities::setPositionMove(4);
+                else
+                    nextMove = 4;
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
-                Display::drawSpritesFood(1);
                 Display::drawWall();
                 al_flip_display();
             }
@@ -65,7 +76,6 @@ void Game::loopGame(){
 
         // ativiando a funcao close da janela
         if(Game::events.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
-
             Game::setPlaying(false);
         }
 
@@ -100,7 +110,7 @@ void Game::loopGame(){
         }
 
         // movimentado o pacman 65 pixeis por segundo
-        if(Game::checkNextSQM()){ // checando disponibilidade
+        if(Game::checkNextSQM(0)){ // checando disponibilidade
             if(Entities::getPositionMove() == 1)
                 Entities::setPosY(Entities::getPosY() - SPEED);
             else if(Entities::getPositionMove() == 2)
@@ -108,6 +118,16 @@ void Game::loopGame(){
             else if(Entities::getPositionMove() == 3)
                 Entities::setPosY(Entities::getPosY() + SPEED);
             else
+                Entities::setPosX(Entities::getPosX() - SPEED);
+        }else{
+            Entities::setPositionMove(nextMove);
+            if(nextMove == 1 && Game::checkNextSQM(1, 1))
+                Entities::setPosY(Entities::getPosY() - SPEED);
+            else if(nextMove == 2 && Game::checkNextSQM(1, 2))
+                Entities::setPosX(Entities::getPosX() + SPEED);
+            else if(nextMove == 3 && Game::checkNextSQM(1, 3))
+                Entities::setPosY(Entities::getPosY() + SPEED);
+            else if(nextMove == 4 && Game::checkNextSQM(1, 4))
                 Entities::setPosX(Entities::getPosX() - SPEED);
         }
 
@@ -118,34 +138,57 @@ void Game::loopGame(){
 }
 
 // funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
-bool Game::checkNextSQM(){
-    if(Entities::getPositionMove() == 1){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
-            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
-            return true;
-        }else
-            return false;
-    }else if(Entities::getPositionMove() == 2){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE+1] == 1){
-            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE+1 << endl;
-            return true;
+bool Game::checkNextSQM(int action, int checkNextMove){
+    if(action == 0){
+        if(Entities::getPositionMove() == 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()+2)/PIXEL_GAME_SIZE] == 1){
+                return true;
+            }else
+                return false;
+        }else if(Entities::getPositionMove() == 2){
+            if(Rules::tableSQMS[((Display::getPosY()+2)/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE+1] == 1){
+                return true;
+            }
+            else
+                return false;
+        }else if(Entities::getPositionMove() == 3){
+            if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE+1][(Display::getPosX()/PIXEL_GAME_SIZE)] == 1){
+                return true;
+            }
+            else
+                return false;
+        }else if(Entities::getPositionMove() == 4){
+            if(Rules::tableSQMS[(Display::getPosY()+2)/PIXEL_GAME_SIZE][(Display::getPosX()-2)/PIXEL_GAME_SIZE] == 1){
+                return true;
+            }
+            else
+                return false;
         }
-        else
-            return false;
-    }else if(Entities::getPositionMove() == 3){
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE+1][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
-            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE+1 << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
-            return true;
-        }
-        else
-            return false;
     }else{
-        if(Rules::tableSQMS[(Display::getPosY()+6)/PIXEL_GAME_SIZE][(Display::getPosX()+6)/PIXEL_GAME_SIZE] == 1){
-            cout << (Display::getPosY()+6)/PIXEL_GAME_SIZE << " - " << (Display::getPosX()+6)/PIXEL_GAME_SIZE << endl;
-            return true;
+        if(checkNextMove == 1){
+            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] == 1){
+                return true;
+            }else
+                return false;
+        }else if(checkNextMove == 2){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)+1] == 1){
+                return true;
+            }
+            else
+                return false;
+        }else if(checkNextMove == 3){
+            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE)+1][(Display::getPosX())/PIXEL_GAME_SIZE] == 1){
+                return true;
+            }
+            else
+                return false;
+        }else if(checkNextMove == 4){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][((Display::getPosX())/PIXEL_GAME_SIZE)-1] == 1){
+                return true;
+            }
+            else
+                return false;
         }
-        else
-            return false;
     }
 }
 

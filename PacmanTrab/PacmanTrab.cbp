@@ -46,6 +46,8 @@
 		</Unit>
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
+		<Unit filename="Rules.cpp" />
+		<Unit filename="Rules.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

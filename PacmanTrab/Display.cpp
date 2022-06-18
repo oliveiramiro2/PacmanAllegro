@@ -26,8 +26,8 @@ Display::Display(){
     al_clear_to_color(al_map_rgb(255,255,255));
 
     // setando a posicao inicial do pacman no centro da tela e setando seu movimento a direita
-    Entities::setPosX(9*PIXEL_GAME_SIZE-6);
-    Entities::setPosY(10*PIXEL_GAME_SIZE-6);
+    Entities::setPosX(9*PIXEL_GAME_SIZE);
+    Entities::setPosY(10*PIXEL_GAME_SIZE);
     Entities::setPositionMove(2);
 }
 
@@ -152,5 +152,5 @@ void Display::drawPacman(int sprite, int move){
         }
     }
 
-    al_draw_bitmap(Display::pacman, Entities::getPosX()-6, Entities::getPosY()-6, ALLEGRO_FLIP_VERTICAL);
+    al_draw_bitmap(Display::pacman, Entities::getPosX(), Entities::getPosY(), ALLEGRO_FLIP_VERTICAL);
 }
