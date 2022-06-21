@@ -1,15 +1,15 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 #include "Display.h"
-#include "Rules.h"
 
-class Game : public Display, public Rules{
+class Game : public Display{
 public:
     void setPlaying(bool value);
     bool getPlaying();
     void setDraw(bool value);
     bool getDraw();
     void loopGame();
+    void winGame();
     int count = 0;
     int nextMove = 2;
     ALLEGRO_TIMER *time = NULL;

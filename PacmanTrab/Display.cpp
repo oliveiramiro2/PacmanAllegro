@@ -113,7 +113,8 @@ void Display::drawSpritesFood(int sprite){
 
     for(int i=1; i<MAX_SIZE_TABLE-1;i++){
         for(int j=1; j<MAX_SIZE_TABLE-1; j++){
-            al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, ALLEGRO_FLIP_VERTICAL);
+            if(Rules::tableSQMS[j][i] == 1)
+                al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, ALLEGRO_FLIP_HORIZONTAL);
         }
     }
 

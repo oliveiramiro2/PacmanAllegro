@@ -5,8 +5,9 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 #include "Entities.h"
+#include "Rules.h"
 
-class Display : public Entities{
+class Display : public Entities, public Rules{
 public:
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;

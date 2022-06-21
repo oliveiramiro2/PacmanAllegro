@@ -295,16 +295,17 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
-1655440074 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
+1655824887 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
 	<iostream>
 	"Display.h"
 
-1654045435 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
+1655517164 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 	"Entities.h"
+	"Rules.h"
 
 1654556466 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\main.cpp
 	<stdio.h>
@@ -317,11 +318,10 @@
 	<iostream>
 	"Wall.h"
 
-1655512634 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
+1655518348 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
 	"Display.h"
-	"Rules.h"
 
-1655442561 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
+1655826634 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
 	<iostream>
 	<stdlib.h>
 	"Game.h"

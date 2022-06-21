@@ -8,7 +8,7 @@ Rules.o: Rules.h Rules.cpp
 	g++ -c Rules.cpp -o Rules.o
 
 Display.o: Display.h Display.cpp
-	g++ -c Display.cpp -o Display.oGame.o: Game.h Game.cpp
+	g++ Display.cpp -o Display.oGame.o: Game.h Game.cpp
 
 Game.o: Game.h Game.cpp
 	g++ -c Game.cpp -o Game.o

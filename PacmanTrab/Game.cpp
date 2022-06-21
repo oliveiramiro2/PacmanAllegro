@@ -27,14 +27,15 @@ Game::Game() : Display(){
     // iniciando loop do jogo
     Game::setPlaying(true);
     Game::loopGame();
+}
 
-    // desalocando ponteiros
+Game::~Game(){
+   // desalocando ponteiros
     al_destroy_event_queue(queueEvent); // Destroi fila de eventos
     al_destroy_bitmap(Display::food); //Destroi a comida
     al_destroy_bitmap(Display::pacman); //Destroi o pacman
     al_destroy_display(Display::display); //Destroi a tela
     al_destroy_bitmap(Display::food); //Destroi a comida
-
 }
 
 void Game::loopGame(){
@@ -49,24 +50,28 @@ void Game::loopGame(){
             if(Game::events.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
                 Game::setPlaying(false);
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_DOWN){ // baixo
-                if(Game::checkNextSQM(1, 3))
+                if(Game::checkNextSQM(1, 3)){
                     Entities::setPositionMove(3);
-                else
+                    nextMove = 3;
+                }else
                     nextMove = 3;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_RIGHT){ // direita
-                if(Game::checkNextSQM(1, 2))
+                if(Game::checkNextSQM(1, 2)){
                     Entities::setPositionMove(2);
-                else
+                    nextMove = 2;
+                }else
                     nextMove = 2;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_UP){ // cima
-                if(Game::checkNextSQM(1, 1))
+                if(Game::checkNextSQM(1, 1)){
                     Entities::setPositionMove(1);
-                else
+                    nextMove = 1;
+                }else
                     nextMove = 1;
             }else if(Game::events.keyboard.keycode == ALLEGRO_KEY_LEFT){ // esquerda
-                if(Game::checkNextSQM(1, 4))
+                if(Game::checkNextSQM(1, 4)){
                     Entities::setPositionMove(4);
-                else
+                    nextMove = 4;
+                }else
                     nextMove = 4;
             }else if(Game::events.type == ALLEGRO_EVENT_TIMER){
                 Display::drawWall();
@@ -110,16 +115,18 @@ void Game::loopGame(){
         }
 
         // movimentado o pacman 65 pixeis por segundo
-        if(Game::checkNextSQM(0)){ // checando disponibilidade
+        if(Game::checkNextSQM(0) && !Game::checkNextSQM(1, nextMove)){ // checando disponibilidade
+                cout << "IF\n" << endl;
             if(Entities::getPositionMove() == 1)
                 Entities::setPosY(Entities::getPosY() - SPEED);
             else if(Entities::getPositionMove() == 2)
                 Entities::setPosX(Entities::getPosX() + SPEED);
             else if(Entities::getPositionMove() == 3)
                 Entities::setPosY(Entities::getPosY() + SPEED);
-            else
+            else if(Entities::getPositionMove() == 4)
                 Entities::setPosX(Entities::getPosX() - SPEED);
-        }else{
+        }else if(Game::checkNextSQM(1, nextMove)){
+            cout << "ELSE 1\n" << Entities::getPosY()/PIXEL_GAME_SIZE << " - " << Entities::getPosX()/PIXEL_GAME_SIZE << endl;
             Entities::setPositionMove(nextMove);
             if(nextMove == 1 && Game::checkNextSQM(1, 1))
                 Entities::setPosY(Entities::getPosY() - SPEED);
@@ -129,61 +136,93 @@ void Game::loopGame(){
                 Entities::setPosY(Entities::getPosY() + SPEED);
             else if(nextMove == 4 && Game::checkNextSQM(1, 4))
                 Entities::setPosX(Entities::getPosX() - SPEED);
-        }
+        }/*else if(Entities::getPositionMove() != nextMove){
+            cout << "ELSE 2\n" << endl;
+            Entities::setPositionMove(nextMove);
+            if(nextMove == 1 && Game::checkNextSQM(1, 1))
+                Entities::setPosY(Entities::getPosY() - SPEED);
+            else if(nextMove == 2 && Game::checkNextSQM(1, 2))
+                Entities::setPosX(Entities::getPosX() + SPEED);
+            else if(nextMove == 3 && Game::checkNextSQM(1, 3))
+                Entities::setPosY(Entities::getPosY() + SPEED);
+            else if(nextMove == 4 && Game::checkNextSQM(1, 4))
+                Entities::setPosX(Entities::getPosX() - SPEED);
+        }*/
 
+        // check win
+        Game::winGame();
 
         // contador para desenhos na tela
         Game::count++;
     }
 }
 
+void Game::winGame(){
+    int countWin = 0;
+    for(int i=1; i<PIXEL_GAME_SIZE; i++){
+        for(int j=1; j<PIXEL_GAME_SIZE; j++){
+            if(Rules::tableSQMS[i][j] == 2)
+                countWin++;
+        }
+    }
+    if(countWin >= 320){
+        Game::setPlaying(false);
+    }
+}
+
 // funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
 bool Game::checkNextSQM(int action, int checkNextMove){
     if(action == 0){
+        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0)
+            Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] = 2;
+
         if(Entities::getPositionMove() == 1){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()+2)/PIXEL_GAME_SIZE] == 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }else
                 return false;
         }else if(Entities::getPositionMove() == 2){
-            if(Rules::tableSQMS[((Display::getPosY()+2)/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE+1] == 1){
+            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(Entities::getPositionMove() == 3){
-            if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE+1][(Display::getPosX()/PIXEL_GAME_SIZE)] == 1){
+            if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(Entities::getPositionMove() == 4){
-            if(Rules::tableSQMS[(Display::getPosY()+2)/PIXEL_GAME_SIZE][(Display::getPosX()-2)/PIXEL_GAME_SIZE] == 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }
             else
                 return false;
         }
     }else{
+        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0)
+            Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] = 2;
+
         if(checkNextMove == 1){
-            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] == 1){
+            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }else
                 return false;
         }else if(checkNextMove == 2){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)+1] == 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE+1)] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(checkNextMove == 3){
-            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE)+1][(Display::getPosX())/PIXEL_GAME_SIZE] == 1){
+            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE+1)][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(checkNextMove == 4){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][((Display::getPosX())/PIXEL_GAME_SIZE)-1] == 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][((Display::getPosX())/PIXEL_GAME_SIZE)-1] >= 1){
                 return true;
             }
             else
