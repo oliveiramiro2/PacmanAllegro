@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Display.h"
 
 #define DIMENSIONS_SCREEN_PACMAN 665
@@ -24,6 +25,9 @@ Display::Display(){
     // iniciando sprites e setando a cor branca na tela
     al_init_image_addon();
     al_clear_to_color(al_map_rgb(255,255,255));
+
+    // iniciando texto
+    //Display::fontDefault = al_load_font("Montserrat.ttf", 20, NULL);
 
     // setando a posicao inicial do pacman no centro da tela e setando seu movimento a direita
     Entities::setPosX(9*PIXEL_GAME_SIZE);
@@ -155,3 +159,7 @@ void Display::drawPacman(int sprite, int move){
 
     al_draw_bitmap(Display::pacman, Entities::getPosX(), Entities::getPosY(), ALLEGRO_FLIP_VERTICAL);
 }
+
+/*void Display::drawScore(int score){
+    al_draw_text(fontDefault, al_map_rgb(255,255,255), PIXEL_GAME_SIZE*(MAX_SIZE_TABLE-4), 15, NULL, "Pontos: 1");
+}*/

@@ -16,6 +16,8 @@ Game::Game() : Display(){
     al_install_keyboard();
     al_install_mouse();
     al_start_timer(time);
+    al_init_font_addon();
+    al_init_ttf_addon();
 
 
     // iniciando registro de eventos
@@ -36,6 +38,7 @@ Game::~Game(){
     al_destroy_bitmap(Display::pacman); //Destroi o pacman
     al_destroy_display(Display::display); //Destroi a tela
     al_destroy_bitmap(Display::food); //Destroi a comida
+    //al_destroy_font(fontDefault);
 }
 
 void Game::loopGame(){
@@ -90,6 +93,7 @@ void Game::loopGame(){
             Display::drawSpritesFood(1);
             Display::drawWall();
             Display::drawPacman(1, Game::getPositionMove());
+            //Display::drawScore(scorePlayer);
             al_flip_display();
             Game::setDraw(false);
         }
@@ -116,7 +120,6 @@ void Game::loopGame(){
 
         // movimentado o pacman 65 pixeis por segundo
         if(Game::checkNextSQM(0) && (!Game::checkNextSQM(1, nextMove) || nextMove == Entities::getPositionMove())){ // checando disponibilidade
-                cout << "IF\n" << endl;
             if(Entities::getPositionMove() == 1)
                 Entities::setPosY(Entities::getPosY() - SPEED);
             else if(Entities::getPositionMove() == 2)
@@ -126,21 +129,9 @@ void Game::loopGame(){
             else if(Entities::getPositionMove() == 4)
                 Entities::setPosX(Entities::getPosX() - SPEED);
         }else if(nextMove != Entities::getPositionMove() && Game::checkNextSQM(1, nextMove)){
-            cout << "ELSE 1\n" << Entities::getPosY()/PIXEL_GAME_SIZE << " - " << Entities::getPosX()/PIXEL_GAME_SIZE << endl;
             Entities::setPositionMove(nextMove);
 
-        }/*else if(Entities::getPositionMove() != nextMove){
-            cout << "ELSE 2\n" << endl;
-            Entities::setPositionMove(nextMove);
-            if(nextMove == 1 && Game::checkNextSQM(1, 1))
-                Entities::setPosY(Entities::getPosY() - SPEED);
-            else if(nextMove == 2 && Game::checkNextSQM(1, 2))
-                Entities::setPosX(Entities::getPosX() + SPEED);
-            else if(nextMove == 3 && Game::checkNextSQM(1, 3))
-                Entities::setPosY(Entities::getPosY() + SPEED);
-            else if(nextMove == 4 && Game::checkNextSQM(1, 4))
-                Entities::setPosX(Entities::getPosX() - SPEED);
-        }*/
+        }
 
         // check win
         Game::winGame();
@@ -166,8 +157,10 @@ void Game::winGame(){
 // funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
 bool Game::checkNextSQM(int action, int checkNextMove){
     if(action == 0){
-        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0)
+        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0){
+            //scorePlayer++;
             Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] = 2;
+        }
 
         if(Entities::getPositionMove() == 1){
             if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE-1][(Display::getPosX())/PIXEL_GAME_SIZE] && Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
@@ -194,8 +187,10 @@ bool Game::checkNextSQM(int action, int checkNextMove){
                 return false;
         }
     }else{
-        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0)
+        if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0){
+            //scorePlayer++;
             Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] = 2;
+        }
 
         if(checkNextMove == 1){
             if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
