@@ -14,12 +14,13 @@ public:
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
     ALLEGRO_BITMAP *pacman = NULL;
-    //ALLEGRO_FONT *fontDefault = NULL;
+    ALLEGRO_FONT *fontDefault = NULL;
     void drawPacman(int sprite, int move);
     void drawWall();
     void drawSpritesFood(int sprite);
-    //void drawScore(int score);
+    void drawScore(int score = 0);
     Display();
+    ~Display();
 private:
 };
 
