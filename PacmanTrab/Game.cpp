@@ -120,6 +120,7 @@ void Game::loopGame(){
 
         // movimentado o pacman 65 pixeis por segundo
         if(Game::checkNextSQM(0) && (!Game::checkNextSQM(1, nextMove) || nextMove == Entities::getPositionMove())){ // checando disponibilidade
+            cout << "fdds: " << endl;
             if(Entities::getPositionMove() == 1)
                 Entities::setPosY(Entities::getPosY() - SPEED);
             else if(Entities::getPositionMove() == 2)
@@ -129,7 +130,19 @@ void Game::loopGame(){
             else if(Entities::getPositionMove() == 4)
                 Entities::setPosX(Entities::getPosX() - SPEED);
         }else if(nextMove != Entities::getPositionMove() && Game::checkNextSQM(1, nextMove)){
-            Entities::setPositionMove(nextMove);
+            if(Display::getPosY() % 35 == 0 && Display::getPosX() % 35 == 0)
+                Entities::setPositionMove(nextMove);
+            else{
+            cout << "fdsfdsdds: " << endl;
+                if(Entities::getPositionMove() == 1)
+                    Entities::setPosY(Entities::getPosY() - SPEED);
+                else if(Entities::getPositionMove() == 2)
+                    Entities::setPosX(Entities::getPosX() + SPEED);
+                else if(Entities::getPositionMove() == 3)
+                    Entities::setPosY(Entities::getPosY() + SPEED);
+                else if(Entities::getPositionMove() == 4)
+                    Entities::setPosX(Entities::getPosX() - SPEED);
+            }
 
         }
 
@@ -144,7 +157,7 @@ void Game::loopGame(){
 
 // funcao que consulta a matriz de SQM do tabuleiro e checa se pode movimentar
 bool Game::checkNextSQM(int action, int checkNextMove){
-    cout << "e: " << Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] << " - " << Display::getPosY()/PIXEL_GAME_SIZE << " - " << Display::getPosX()/PIXEL_GAME_SIZE << endl;
+    //cout << "a: " <<  Display::getPosY() % 35 << " " << Display::getPosX() % 35 << "  ->" << Display::getPosX() << "  " << action << endl;
     if(action == 0){
         if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 0 && Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][Display::getPosX()/PIXEL_GAME_SIZE] != 2){
             scorePlayer++;
@@ -152,24 +165,24 @@ bool Game::checkNextSQM(int action, int checkNextMove){
         }
 
         if(Entities::getPositionMove() == 1){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] && Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }else
                 return false;
         }else if(Entities::getPositionMove() == 2){
-            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE] >= 1 && Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE+1] >= 1){
+            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)][Display::getPosX()/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(Entities::getPositionMove() == 3){
-            if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE+1][(Display::getPosX()/PIXEL_GAME_SIZE)] >= 1 && Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)] >= 1){
+            if(Rules::tableSQMS[Display::getPosY()/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)] >= 1){
                 return true;
             }
             else
                 return false;
         }else if(Entities::getPositionMove() == 4){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
                 return true;
             }
             else
@@ -182,24 +195,24 @@ bool Game::checkNextSQM(int action, int checkNextMove){
         }
 
         if(checkNextMove == 1){
-            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
+            if(Rules::tableSQMS[((Display::getPosY())/PIXEL_GAME_SIZE)-1][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }else
                 return false;
         }else if(checkNextMove == 2){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE+1)] >= 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE+1)] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }
             else
                 return false;
         }else if(checkNextMove == 3){
-            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE+1)][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1){
+            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE+1)][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }
             else
                 return false;
         }else if(checkNextMove == 4){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][((Display::getPosX())/PIXEL_GAME_SIZE)-1] >= 1){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][((Display::getPosX())/PIXEL_GAME_SIZE)-1] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }
             else
