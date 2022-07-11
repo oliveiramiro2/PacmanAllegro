@@ -4,13 +4,15 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
-#include "Entities.h"
-#include "Rules.h"
 #include "allegro5/allegro_font.h"
 #include "allegro5/allegro_ttf.h"
+#include "Entities.h"
+#include "Rules.h"
+#include "Ghost.h"
 
 class Display : public Entities, public Rules{
 public:
+    Ghost *ghost1 = new Ghost(1);
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
     ALLEGRO_BITMAP *pacman = NULL;
@@ -19,6 +21,7 @@ public:
     void drawWall();
     void drawSpritesFood(int sprite);
     void drawScore(int score = 0);
+    void drawGhost();
     Display();
     ~Display();
 private:

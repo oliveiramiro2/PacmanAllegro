@@ -27,6 +27,7 @@ Display::Display(){
     al_clear_to_color(al_map_rgb(255,255,255));
     al_init_font_addon();
     al_init_ttf_addon();
+    al_init_primitives_addon();
 
     // iniciando texto
     Display::fontDefault = al_load_font("./assets/Montserrat.ttf", 20, 0);
@@ -39,11 +40,10 @@ Display::Display(){
 
 Display::~Display(){
     al_destroy_font(fontDefault);
+    //free(ghost1);
 }
 
 void Display::drawWall(){
-    al_init_primitives_addon();
-
     // wall around
     for(int i=1; i<MAX_SIZE_TABLE; i++){
         al_draw_filled_rectangle(0, ((MAX_SIZE_TABLE-i)*PIXEL_GAME_SIZE)-1, PIXEL_GAME_SIZE, (MAX_SIZE_TABLE-i-1)*(PIXEL_GAME_SIZE), al_map_rgb(255,0,0)); // left
@@ -113,7 +113,6 @@ void Display::drawWall(){
 
 // desenhando as comidas
 void Display::drawSpritesFood(int sprite){
-
     if(sprite == 1){
         Display::food = al_load_bitmap("./assets/smallFood.png");
     }
@@ -127,7 +126,14 @@ void Display::drawSpritesFood(int sprite){
                 al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, ALLEGRO_FLIP_HORIZONTAL);
         }
     }
+    drawGhost();
+}
 
+//desenhando fantasmas
+void Display::drawGhost(){
+    ghost1->ghost = al_load_bitmap("./assets/ghostUpRed.png");
+
+    al_draw_bitmap(ghost1->ghost, ghost1->getPosX(), ghost1->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
 }
 
 // desenhando o Pacman
