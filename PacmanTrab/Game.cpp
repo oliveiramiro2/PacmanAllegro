@@ -36,7 +36,6 @@ Game::~Game(){
     al_destroy_bitmap(Display::pacman); //Destroi o pacman
     al_destroy_display(Display::display); //Destroi a tela
     al_destroy_bitmap(Display::food); //Destroi a comida
-    //al_destroy_font(fontDefault);
 }
 
 void Game::loopGame(){
@@ -118,9 +117,15 @@ void Game::loopGame(){
             }
         }
 
+        ghost1->setPosX(ghost1->getPosX()+SPEED);
+        ghost2->setPosY(ghost2->getPosY()+SPEED);
+        ghost3->setPosX(ghost3->getPosX()+SPEED);
+        ghost4->setPosY(ghost4->getPosY()-SPEED);
+
+
         // movimentado o pacman 65 pixeis por segundo
         if(Game::checkNextSQM(0) && (!Game::checkNextSQM(1, nextMove) || nextMove == Entities::getPositionMove())){ // checando disponibilidade
-            //cout << "fdds: " << endl;
+
             if(Entities::getPosX() > 34 && Entities::getPosY() > 34){
                 if(Entities::getPositionMove() == 1)
                     Entities::setPosY(Entities::getPosY() - SPEED);
@@ -135,7 +140,7 @@ void Game::loopGame(){
             if(Display::getPosY() % 35 == 0 && Display::getPosX() % 35 == 0 && Game::checkNextSQM(1, nextMove))
                 Entities::setPositionMove(nextMove);
             else{
-            //cout << "fdsfdsdds: " << endl;
+
             if(Entities::getPosX() > 34 && Entities::getPosY() > 34){
                 if(Entities::getPositionMove() == 1)
                     Entities::setPosY(Entities::getPosY() - SPEED);

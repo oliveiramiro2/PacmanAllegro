@@ -8,7 +8,6 @@
 
 class Ghost : public Entities {
 public:
-    void drawGhost();
     ALLEGRO_BITMAP *ghost = al_load_bitmap("./assets/bigFood.png");
     Ghost(int type);
     ~Ghost();

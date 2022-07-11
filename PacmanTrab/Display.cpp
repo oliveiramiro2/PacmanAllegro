@@ -40,7 +40,10 @@ Display::Display(){
 
 Display::~Display(){
     al_destroy_font(fontDefault);
-    //free(ghost1);
+    free(ghost1);
+    free(ghost2);
+    free(ghost3);
+    free(ghost4);
 }
 
 void Display::drawWall(){
@@ -126,18 +129,26 @@ void Display::drawSpritesFood(int sprite){
                 al_draw_bitmap(Display::food, i*PIXEL_GAME_SIZE, j*PIXEL_GAME_SIZE, ALLEGRO_FLIP_HORIZONTAL);
         }
     }
-    drawGhost();
 }
 
 //desenhando fantasmas
 void Display::drawGhost(){
-    ghost1->ghost = al_load_bitmap("./assets/ghostUpRed.png");
+    ghost1->ghost = al_load_bitmap("./assets/ghostRedRight.png");
+    ghost2->ghost = al_load_bitmap("./assets/ghostYellowDown.png");
+    ghost3->ghost = al_load_bitmap("./assets/ghostBlueLeft.png");
+    ghost4->ghost = al_load_bitmap("./assets/ghostPinkUp.png");
 
     al_draw_bitmap(ghost1->ghost, ghost1->getPosX(), ghost1->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
+    al_draw_bitmap(ghost2->ghost, ghost2->getPosX(), ghost2->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
+    al_draw_bitmap(ghost3->ghost, ghost3->getPosX(), ghost3->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
+    al_draw_bitmap(ghost4->ghost, ghost4->getPosX(), ghost4->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
 }
 
 // desenhando o Pacman
 void Display::drawPacman(int sprite, int move){
+
+    // desenhando o fantasma
+    drawGhost();
 
     if(move == 1){
 
@@ -173,5 +184,5 @@ void Display::drawPacman(int sprite, int move){
 }
 
 void Display::drawScore(int score){
-    al_draw_textf(fontDefault, al_map_rgb(255,255,255), PIXEL_GAME_SIZE*(MAX_SIZE_TABLE-4), 13, NULL, "Pontos: %d", score);
+    al_draw_textf(fontDefault, al_map_rgb(255,255,255), PIXEL_GAME_SIZE*(MAX_SIZE_TABLE-4), 6, NULL, "Pontos: %d", score);
 }

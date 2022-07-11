@@ -295,12 +295,12 @@
 	<allegro5/allegro_native_dialog.h>
 	"Display.h"
 
-1657508340 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
+1657510977 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.cpp
 	<iostream>
 	<string>
 	"Display.h"
 
-1657508711 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
+1657509570 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\display.h
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<allegro5/allegro_image.h>
@@ -342,14 +342,14 @@
 
 1654560796 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\rules.h
 
-1657508066 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.h
+1657509218 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.h
 	"Entities.h"
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1657507917 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.cpp
+1657509954 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.cpp
 	<iostream>
 	"Ghost.h"
 
