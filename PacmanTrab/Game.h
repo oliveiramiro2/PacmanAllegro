@@ -9,6 +9,7 @@ public:
     void setDraw(bool value);
     bool getDraw();
     void loopGame();
+    bool moveGhost = false;
     int count = 0;
     int nextMove = 2;
     int scorePlayer = 0;

@@ -13,10 +13,6 @@
 class Display : public Entities, public Rules{
 public:
     Ghost *ghost1 = new Ghost(1);
-    Ghost *ghost2 = new Ghost(2);
-    Ghost *ghost3 = new Ghost(3);
-    Ghost *ghost4 = new Ghost(4);
-    Ghost *ghost5 = new Ghost(5);
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_BITMAP *food = NULL;
     ALLEGRO_BITMAP *pacman = NULL;
