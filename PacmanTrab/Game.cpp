@@ -119,10 +119,21 @@ void Game::loopGame(){
             }
         }
 
-        // movendo os fantasmas
+        // trocando direcao dos fantasmas
         if(ghost1->getPosY() % PIXEL_GAME_SIZE == 0 && ghost1->getPosX() % PIXEL_GAME_SIZE == 0){
             ghost1->checkSide(Rules::tableSQMS, ghost1->getPosX() / PIXEL_GAME_SIZE, ghost1->getPosY() / PIXEL_GAME_SIZE);
         }
+        if(ghost2->getPosY() % PIXEL_GAME_SIZE == 0 && ghost2->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost2->checkSide(Rules::tableSQMS, ghost2->getPosX() / PIXEL_GAME_SIZE, ghost2->getPosY() / PIXEL_GAME_SIZE);
+        }
+        if(ghost3->getPosY() % PIXEL_GAME_SIZE == 0 && ghost3->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost3->checkSide(Rules::tableSQMS, ghost3->getPosX() / PIXEL_GAME_SIZE, ghost3->getPosY() / PIXEL_GAME_SIZE);
+        }
+        if(ghost4->getPosY() % PIXEL_GAME_SIZE == 0 && ghost4->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost4->checkSide(Rules::tableSQMS, ghost4->getPosX() / PIXEL_GAME_SIZE, ghost4->getPosY() / PIXEL_GAME_SIZE);
+        }
+
+        // movendo fantasmas
         if(this->count % 2 == 0){
             if(ghost1->getPositionMove() == 1){
                 this->ghost1->setPosY(ghost1->getPosY() - SPEED);
@@ -132,6 +143,36 @@ void Game::loopGame(){
                 ghost1->setPosY(ghost1->getPosY() + SPEED);
             }else if(ghost1->getPositionMove() == 4){
                 ghost1->setPosX(ghost1->getPosX() - SPEED);
+            }
+
+            if(ghost2->getPositionMove() == 1){
+                this->ghost2->setPosY(ghost2->getPosY() - SPEED);
+            }else if(ghost2->getPositionMove() == 2){
+                ghost2->setPosX(ghost2->getPosX() + SPEED);
+            }else if(ghost2->getPositionMove() == 3){
+                ghost2->setPosY(ghost2->getPosY() + SPEED);
+            }else if(ghost2->getPositionMove() == 4){
+                ghost2->setPosX(ghost2->getPosX() - SPEED);
+            }
+
+            if(ghost3->getPositionMove() == 1){
+                this->ghost3->setPosY(ghost3->getPosY() - SPEED);
+            }else if(ghost3->getPositionMove() == 2){
+                ghost3->setPosX(ghost3->getPosX() + SPEED);
+            }else if(ghost3->getPositionMove() == 3){
+                ghost3->setPosY(ghost3->getPosY() + SPEED);
+            }else if(ghost3->getPositionMove() == 4){
+                ghost3->setPosX(ghost3->getPosX() - SPEED);
+            }
+
+            if(ghost4->getPositionMove() == 1){
+                this->ghost4->setPosY(ghost4->getPosY() - SPEED);
+            }else if(ghost4->getPositionMove() == 2){
+                ghost4->setPosX(ghost4->getPosX() + SPEED);
+            }else if(ghost4->getPositionMove() == 3){
+                ghost4->setPosY(ghost4->getPosY() + SPEED);
+            }else if(ghost4->getPositionMove() == 4){
+                ghost4->setPosX(ghost4->getPosX() - SPEED);
             }
         }
 
@@ -182,7 +223,12 @@ void Game::loopGame(){
         }
 
         // checando colisao
-        if(ghost1->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost1->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE)
+        if(
+            ghost1->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost1->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost2->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost2->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost3->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost3->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost4->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost4->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE
+          )
             this->setPlaying(false);
 
         // checando win
