@@ -117,11 +117,66 @@ void Game::loopGame(){
             }
         }
 
-        ghost1->setPosX(ghost1->getPosX()+SPEED);
-        ghost2->setPosY(ghost2->getPosY()+SPEED);
-        ghost3->setPosX(ghost3->getPosX()+SPEED);
-        ghost4->setPosY(ghost4->getPosY()-SPEED);
+        // movendo os fantasmas
+        if(ghost1->getPosY() % PIXEL_GAME_SIZE == 0 && ghost1->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost1->checkSide(Rules::tableSQMS, ghost1->getPosX() / PIXEL_GAME_SIZE, ghost1->getPosY() / PIXEL_GAME_SIZE);
+        }
+        if(Game::count % 2 == 0 && ghost1->checkMove(Rules::tableSQMS)){
+            if(ghost1->getPositionMove() == 1){
+                ghost1->setPosX(ghost1->getPosY() - SPEED);
+            }else if(ghost1->getPositionMove() == 2){
+                ghost1->setPosX(ghost1->getPosX() + SPEED);
+            }else if(ghost1->getPositionMove() == 3){
+                ghost1->setPosX(ghost1->getPosY() + SPEED);
+            }else if(ghost1->getPositionMove() == 4){
+                ghost1->setPosX(ghost1->getPosX() - SPEED);
+            }
+        }
 
+        if(ghost2->getPosY() % PIXEL_GAME_SIZE == 0 && ghost2->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost2->checkSide(Rules::tableSQMS, ghost2->getPosX() / PIXEL_GAME_SIZE, ghost2->getPosY() / PIXEL_GAME_SIZE);
+        }
+        if(Game::count % 2 == 0 && ghost2->checkMove(Rules::tableSQMS)){
+            if(ghost2->getPositionMove() == 1){
+                ghost2->setPosX(ghost2->getPosY() - SPEED);
+            }else if(ghost2->getPositionMove() == 2){
+                ghost2->setPosX(ghost2->getPosX() + SPEED);
+            }else if(ghost2->getPositionMove() == 3){
+                ghost2->setPosX(ghost2->getPosY() + SPEED);
+            }else if(ghost2->getPositionMove() == 4){
+                ghost2->setPosX(ghost2->getPosX() - SPEED);
+            }
+        }
+
+        if(ghost3->getPosY() % PIXEL_GAME_SIZE == 0 && ghost3->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost3->checkSide(Rules::tableSQMS, ghost3->getPosX() / PIXEL_GAME_SIZE, ghost3->getPosY() / PIXEL_GAME_SIZE);
+        }
+        if(Game::count % 2 == 0 && ghost3->checkMove(Rules::tableSQMS)){
+            if(ghost3->getPositionMove() == 1){
+                ghost3->setPosX(ghost3->getPosY() - SPEED);
+            }else if(ghost3->getPositionMove() == 2){
+                ghost3->setPosX(ghost3->getPosX() + SPEED);
+            }else if(ghost3->getPositionMove() == 3){
+                ghost3->setPosX(ghost3->getPosY() + SPEED);
+            }else if(ghost3->getPositionMove() == 4){
+                ghost3->setPosX(ghost3->getPosX() - SPEED);
+            }
+        }
+
+        if(ghost4->getPosY() % PIXEL_GAME_SIZE == 0 && ghost4->getPosX() % PIXEL_GAME_SIZE == 0){
+            ghost4->checkSide(Rules::tableSQMS, ghost4->getPosY() / PIXEL_GAME_SIZE, ghost4->getPosX() / PIXEL_GAME_SIZE);
+        }
+        if(Game::count % 2 == 0 && ghost4->checkMove(Rules::tableSQMS)){
+            if(ghost4->getPositionMove() == 1){
+                ghost4->setPosX(ghost4->getPosY() - SPEED);
+            }else if(ghost4->getPositionMove() == 2){
+                ghost4->setPosX(ghost4->getPosX() + SPEED);
+            }else if(ghost4->getPositionMove() == 3){
+                ghost4->setPosX(ghost4->getPosY() + SPEED);
+            }else if(ghost4->getPositionMove() == 4){
+                ghost4->setPosX(ghost4->getPosX() - SPEED);
+            }
+        }
 
         // movimentado o pacman 65 pixeis por segundo
         if(Game::checkNextSQM(0) && (!Game::checkNextSQM(1, nextMove) || nextMove == Entities::getPositionMove())){ // checando disponibilidade

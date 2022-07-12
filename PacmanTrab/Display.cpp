@@ -44,6 +44,7 @@ Display::~Display(){
     free(ghost2);
     free(ghost3);
     free(ghost4);
+    free(ghost5);
 }
 
 void Display::drawWall(){
@@ -133,10 +134,41 @@ void Display::drawSpritesFood(int sprite){
 
 //desenhando fantasmas
 void Display::drawGhost(){
-    ghost1->ghost = al_load_bitmap("./assets/ghostRedRight.png");
-    ghost2->ghost = al_load_bitmap("./assets/ghostYellowDown.png");
-    ghost3->ghost = al_load_bitmap("./assets/ghostBlueLeft.png");
-    ghost4->ghost = al_load_bitmap("./assets/ghostPinkUp.png");
+    if(ghost1->getPositionMove() == 1)
+        ghost1->ghost = al_load_bitmap("./assets/ghostRedDown.png");
+    if(ghost1->getPositionMove() == 2)
+        ghost1->ghost = al_load_bitmap("./assets/ghostRedLeft.png");
+    if(ghost1->getPositionMove() == 3)
+        ghost1->ghost = al_load_bitmap("./assets/ghostRedUp.png");
+    if(ghost1->getPositionMove() == 4)
+        ghost1->ghost = al_load_bitmap("./assets/ghostRedRight.png");
+
+    if(ghost2->getPositionMove() == 1)
+        ghost2->ghost = al_load_bitmap("./assets/ghostYellowDown.png");
+    if(ghost2->getPositionMove() == 2)
+        ghost2->ghost = al_load_bitmap("./assets/ghostYellowLeft.png");
+    if(ghost2->getPositionMove() == 3)
+        ghost2->ghost = al_load_bitmap("./assets/ghostYellowUp.png");
+    if(ghost2->getPositionMove() == 4)
+        ghost2->ghost = al_load_bitmap("./assets/ghostYellowRight.png");
+
+    if(ghost3->getPositionMove() == 1)
+        ghost3->ghost = al_load_bitmap("./assets/ghostBlueDown.png");
+    if(ghost3->getPositionMove() == 2)
+        ghost3->ghost = al_load_bitmap("./assets/ghostBlueLeft.png");
+    if(ghost3->getPositionMove() == 3)
+        ghost3->ghost = al_load_bitmap("./assets/ghostBlueUp.png");
+    if(ghost3->getPositionMove() == 4)
+        ghost3->ghost = al_load_bitmap("./assets/ghostBlueRight.png");
+
+    if(ghost4->getPositionMove() == 1)
+        ghost4->ghost = al_load_bitmap("./assets/ghostPinkDown.png");
+    if(ghost4->getPositionMove() == 2)
+        ghost4->ghost = al_load_bitmap("./assets/ghostPinkLeft.png");
+    if(ghost4->getPositionMove() == 3)
+        ghost4->ghost = al_load_bitmap("./assets/ghostPinkUp.png");
+    if(ghost4->getPositionMove() == 4)
+        ghost4->ghost = al_load_bitmap("./assets/ghostPinkRight.png");
 
     al_draw_bitmap(ghost1->ghost, ghost1->getPosX(), ghost1->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
     al_draw_bitmap(ghost2->ghost, ghost2->getPosX(), ghost2->getPosY(), ALLEGRO_FLIP_HORIZONTAL);
@@ -148,7 +180,7 @@ void Display::drawGhost(){
 void Display::drawPacman(int sprite, int move){
 
     // desenhando o fantasma
-    drawGhost();
+    this->drawGhost();
 
     if(move == 1){
 
