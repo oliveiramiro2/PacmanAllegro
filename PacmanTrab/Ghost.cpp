@@ -38,21 +38,6 @@ Ghost::~Ghost(){
     al_destroy_bitmap(this->ghost);
 }
 
-bool Ghost::checkMove(int table[19][19]){
-    if(this->getPositionMove() == 1){
-        if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE] != 0 && (this->getPosY() % PIXEL_GAME_SIZE == 0 || this->getPosX() / PIXEL_GAME_SIZE == 0))
-            return true;
-    }else if(this->getPositionMove() == 2){
-        if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0 && (this->getPosY() % PIXEL_GAME_SIZE == 0 || this->getPosX() / PIXEL_GAME_SIZE == 0))
-            return true;
-    }else if(this->getPositionMove() == 3){
-        if(table[this->getPosY() / PIXEL_GAME_SIZE+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && (this->getPosY() % PIXEL_GAME_SIZE == 0 || this->getPosX() / PIXEL_GAME_SIZE == 0))
-            return true;
-    }else if(this->getPositionMove() == 4){
-        if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE] != 0 && (this->getPosY() % PIXEL_GAME_SIZE == 0 || this->getPosX() / PIXEL_GAME_SIZE == 0))
-            return true;
-    }
-}
 
 void Ghost::changeDirection(){
     this->setPositionMove((rand() % 4) + 1);
@@ -64,21 +49,18 @@ void Ghost::checkSide(int table[19][19], int x, int y){
             bool lock = true;
 
             while(lock){
-                cout << "Entrou  " << "X: " << x << " - Y: " << y << "  Direcao: " << this->getPositionMove() << endl;
                 this->setPositionMove((rand() % 4) + 1);
-
-                cout << "  Direcao: " << this->getPositionMove() <<endl;
                 if(this->getPositionMove() == 1){
-                    if(table[(this->getPosY() / PIXEL_GAME_SIZE)][this->getPosX() / PIXEL_GAME_SIZE] != 0)
+                    if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 2){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 3){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE+1][this->getPosX() / PIXEL_GAME_SIZE] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 4){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }
             }
@@ -90,24 +72,21 @@ void Ghost::checkSide(int table[19][19], int x, int y){
             bool lock = true;
 
             while(lock){
-                cout << "Entrou2" << " x: " << x << " - y: " << y << "  Direcao: " << this->getPositionMove() <<endl;
                 this->setPositionMove((rand() % 4) + 1);
-                cout << "  Direcao: " << this->getPositionMove() <<endl;
                 if(this->getPositionMove() == 1){
-                    if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0)
+                    if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 2){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 3){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE+1][this->getPosX() / PIXEL_GAME_SIZE] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }else if(this->getPositionMove() == 4){
-                    if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)-1] != 0)
+                    if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
                         lock = false;
                 }
             }
-            cout << "saiu2" << " x: " << x << " - y: " << y << "  Direcao: " << this->getPositionMove() <<endl;
         }
     }
 }

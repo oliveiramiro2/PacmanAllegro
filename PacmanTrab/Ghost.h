@@ -11,7 +11,6 @@
 class Ghost : public Entities {
 public:
     ALLEGRO_BITMAP *ghost = NULL;
-    bool checkMove(int table[19][19]);
     void checkSide(int table[19][19], int x, int y);
     void changeDirection();
     Ghost(int type);

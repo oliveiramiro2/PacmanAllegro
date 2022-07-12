@@ -325,7 +325,7 @@
 1657602076 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.h
 	"Display.h"
 
-1657605132 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
+1657607938 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\game.cpp
 	<iostream>
 	<stdlib.h>
 	"Game.h"
@@ -342,7 +342,7 @@
 
 1654560796 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\rules.h
 
-1657597301 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.h
+1657608085 c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.h
 	<cstdlib>
 	<ctime>
 	"Entities.h"
@@ -351,7 +351,7 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
 
-1657605173 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.cpp
+1657608081 source:c:\users\hp\onedrive\햞ea de trabalho\oo 6 semestre\trabalho\pacmanallegro\pacmantrab\ghost.cpp
 	<iostream>
 	"Ghost.h"
 
