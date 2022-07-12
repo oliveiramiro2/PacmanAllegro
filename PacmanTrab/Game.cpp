@@ -91,6 +91,7 @@ void Game::loopGame(){
             Display::drawWall();
             Display::drawPacman(1, Game::getPositionMove());
             Display::drawScore(scorePlayer);
+            Display::drawGhost();
             al_flip_display();
             Game::setDraw(false);
         }
@@ -176,6 +177,15 @@ void Game::loopGame(){
             }
         }
 
+        // checando colisao
+        if(
+            ghost1->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost1->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost2->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost2->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost3->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost3->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
+            ghost4->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost4->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE
+          )
+            this->setPlaying(false);
+
         // movimentado o pacman 65 pixeis por segundo
         if(Game::checkNextSQM(0) && (!Game::checkNextSQM(1, nextMove) || nextMove == Entities::getPositionMove())){ // checando disponibilidade
 
@@ -221,15 +231,6 @@ void Game::loopGame(){
             }
 
         }
-
-        // checando colisao
-        if(
-            ghost1->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost1->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
-            ghost2->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost2->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
-            ghost3->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost3->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE ||
-            ghost4->getPosY() / PIXEL_GAME_SIZE == Entities::getPosY() / PIXEL_GAME_SIZE && ghost4->getPosX() / PIXEL_GAME_SIZE == Entities::getPosX() / PIXEL_GAME_SIZE
-          )
-            this->setPlaying(false);
 
         // checando win
         if(scorePlayer == 176)
