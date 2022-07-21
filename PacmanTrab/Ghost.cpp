@@ -50,7 +50,7 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
     }
 
     // cout << "ValorX: \n" << pacmanX << "    -   ValorY: " << pacmanY << endl;
-    int biggerX, biggerY;
+    /*int biggerX, biggerY;
     bool xIsBigger, yIsBigger;
 
     if(x > pacmanX){
@@ -96,7 +96,7 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
     }
 
     if(biggerX < biggerY){
-        if(xIsBigger){
+        if(xIsBigger && biggerY < 8){
             if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
                 this->setPositionMove(4);
                 return;
@@ -111,7 +111,7 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
                     return;
                 }
             }
-        }else if(!xIsBigger){
+        }else if(!xIsBigger && biggerY < 8){
             if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
                 this->setPositionMove(2);
                 return;
@@ -126,9 +126,21 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
                     return;
                 }
             }
+        }else if(biggerY > 8){
+            if(yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                   this->setPositionMove(1);
+                    return;
+                }
+            }else if(!yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(3);
+                    return;
+                }
+            }
         }
     }else{
-        if(yIsBigger){
+        if(yIsBigger && biggerX < 8){
             if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
                 this->setPositionMove(1);
                 return;
@@ -143,7 +155,7 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
                     return;
                 }
             }
-        }else if(!yIsBigger){
+        }else if(!yIsBigger && biggerX < 8){
             if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
                 this->setPositionMove(3);
                 return;
@@ -158,10 +170,23 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
                     return;
                 }
             }
+        }else if(biggerX > 8){
+            if(xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(4);
+                    return;
+                }
+            }else if(!xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(2);
+                    return;
+                }
+            }
         }
-    }
+    }*/
 
     this->setPositionMove((rand() % 4) + 1);
+    cout << "FOI RANDOM fdhsjkfhds\n" << endl;
     return;
 }
 

@@ -135,7 +135,7 @@ void Game::loopGame(){
         }
 
         // movendo fantasmas
-        if(this->count % 2 == 0){
+        if(this->count % 3 == 0){
             if(ghost1->getPositionMove() == 1){
                 this->ghost1->setPosY(ghost1->getPosY() - SPEED);
             }else if(ghost1->getPositionMove() == 2){
