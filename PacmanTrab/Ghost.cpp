@@ -44,8 +44,10 @@ Ghost::~Ghost(){
 
 
 void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pacmanY){
-    if(this->getTypeStalker() % 2 == 0)
+    if(this->getTypeStalker() % 2 == 0){
         this->setPositionMove((rand() % 4) + 1);
+        return;
+    }
 
     // cout << "ValorX: \n" << pacmanX << "    -   ValorY: " << pacmanY << endl;
     int biggerX, biggerY;
@@ -65,21 +67,102 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
         yIsBigger = false;
     }
 
-    if(biggerX < biggerY){
-        if(xIsBigger){
-            if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
-                return this->setPositionMove(2);
-            else if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34)
-                return this->setPositionMove(4);
-        }else if(!xIsBigger){
-
+    if(biggerX == 0){
+        if(y < pacmanY){
+            if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(3);
+                return;
+            }
+        }else{
+            if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+               this->setPositionMove(1);
+                return;
+            }
         }
-
     }
 
-    cout << "Valor2 X: \n" << biggerX << "    -   Valor2 Y: " << biggerY << endl;
+    if(biggerY == 0){
+        if(x < pacmanX){
+            if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(2);
+                return;
+            }
+        }else{
+            if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(4);
+                return;
+            }
+        }
+    }
+
+    if(biggerX < biggerY){
+        if(xIsBigger){
+            if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(4);
+                return;
+            }else if(yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                   this->setPositionMove(1);
+                    return;
+                }
+            }else if(!yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(3);
+                    return;
+                }
+            }
+        }else if(!xIsBigger){
+            if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(2);
+                return;
+            }else if(yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                   this->setPositionMove(1);
+                    return;
+                }
+            }else if(!yIsBigger){
+                if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(3);
+                    return;
+                }
+            }
+        }
+    }else{
+        if(yIsBigger){
+            if(table[(this->getPosY() / PIXEL_GAME_SIZE)-1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(1);
+                return;
+            }else if(xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(4);
+                    return;
+                }
+            }else if(!xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(2);
+                    return;
+                }
+            }
+        }else if(!yIsBigger){
+            if(table[(this->getPosY() / PIXEL_GAME_SIZE)+1][this->getPosX() / PIXEL_GAME_SIZE] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                this->setPositionMove(3);
+                return;
+            }else if(xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][this->getPosX() / PIXEL_GAME_SIZE-1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(4);
+                    return;
+                }
+            }else if(!xIsBigger){
+                if(table[this->getPosY() / PIXEL_GAME_SIZE][(this->getPosX() / PIXEL_GAME_SIZE)+1] != 0 && this->getPosX() > 34 && this->getPosY() > 34){
+                    this->setPositionMove(2);
+                    return;
+                }
+            }
+        }
+    }
 
     this->setPositionMove((rand() % 4) + 1);
+    return;
 }
 
 void Ghost::checkSide(int table[19][19], int x, int y, int pacmanX, int pacmanY){
