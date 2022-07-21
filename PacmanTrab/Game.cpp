@@ -122,16 +122,16 @@ void Game::loopGame(){
 
         // trocando direcao dos fantasmas
         if(ghost1->getPosY() % PIXEL_GAME_SIZE == 0 && ghost1->getPosX() % PIXEL_GAME_SIZE == 0){
-            ghost1->checkSide(Rules::tableSQMS, ghost1->getPosX() / PIXEL_GAME_SIZE, ghost1->getPosY() / PIXEL_GAME_SIZE);
+            ghost1->checkSide(Rules::tableSQMS, ghost1->getPosX() / PIXEL_GAME_SIZE, ghost1->getPosY() / PIXEL_GAME_SIZE, Entities::getPosX() / PIXEL_GAME_SIZE, Entities::getPosY() / PIXEL_GAME_SIZE);
         }
         if(ghost2->getPosY() % PIXEL_GAME_SIZE == 0 && ghost2->getPosX() % PIXEL_GAME_SIZE == 0){
-            ghost2->checkSide(Rules::tableSQMS, ghost2->getPosX() / PIXEL_GAME_SIZE, ghost2->getPosY() / PIXEL_GAME_SIZE);
+            ghost2->checkSide(Rules::tableSQMS, ghost2->getPosX() / PIXEL_GAME_SIZE, ghost2->getPosY() / PIXEL_GAME_SIZE, Entities::getPosX() / PIXEL_GAME_SIZE, Entities::getPosY() / PIXEL_GAME_SIZE);
         }
         if(ghost3->getPosY() % PIXEL_GAME_SIZE == 0 && ghost3->getPosX() % PIXEL_GAME_SIZE == 0){
-            ghost3->checkSide(Rules::tableSQMS, ghost3->getPosX() / PIXEL_GAME_SIZE, ghost3->getPosY() / PIXEL_GAME_SIZE);
+            ghost3->checkSide(Rules::tableSQMS, ghost3->getPosX() / PIXEL_GAME_SIZE, ghost3->getPosY() / PIXEL_GAME_SIZE, Entities::getPosX() / PIXEL_GAME_SIZE, Entities::getPosY() / PIXEL_GAME_SIZE);
         }
         if(ghost4->getPosY() % PIXEL_GAME_SIZE == 0 && ghost4->getPosX() % PIXEL_GAME_SIZE == 0){
-            ghost4->checkSide(Rules::tableSQMS, ghost4->getPosX() / PIXEL_GAME_SIZE, ghost4->getPosY() / PIXEL_GAME_SIZE);
+            ghost4->checkSide(Rules::tableSQMS, ghost4->getPosX() / PIXEL_GAME_SIZE, ghost4->getPosY() / PIXEL_GAME_SIZE, Entities::getPosX() / PIXEL_GAME_SIZE, Entities::getPosY() / PIXEL_GAME_SIZE);
         }
 
         // movendo fantasmas

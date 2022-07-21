@@ -11,12 +11,14 @@
 class Ghost : public Entities {
 public:
     ALLEGRO_BITMAP *ghost = NULL;
-    void checkSide(int table[19][19], int x, int y);
-    void changeDirection();
+    void checkSide(int table[19][19], int x, int y, int pacmanX, int pacmanY);
+    void changeDirection(int table[19][19], int x, int y, int pacmanX, int pacmanY);
+    void setTypeStalker(int value);
+    int getTypeStalker();
     Ghost(int type);
     ~Ghost();
 private:
-
+    int typeStalker;
 };
 
 
