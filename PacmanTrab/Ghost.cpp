@@ -49,6 +49,49 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
         return;
     }
 
+    if((y == pacmanY) && ((x > pacmanX) && (table[y][x-1] != 0))){
+        this->setPositionMove(4);
+        return;
+    }
+
+    if((y == pacmanY) && ((x < pacmanX) && (table[y][x+1] != 0))){
+        this->setPositionMove(2);
+        return;
+    }
+
+    if((x == pacmanX) && ((y > pacmanY) && (table[y-1][x] != 0))){
+        this->setPositionMove(1);
+        return;
+    }
+
+    if((x == pacmanX) && ((y < pacmanY) && (table[y+1][x] != 0))){
+        this->setPositionMove(3);
+        return;
+    }
+
+
+
+
+    if((x > pacmanX) && (table[y][x-1] != 0)){
+        this->setPositionMove(4);
+        return;
+    }
+
+    if((x < pacmanX) && (table[y][x+1] != 0)){
+        this->setPositionMove(2);
+        return;
+    }
+
+    if((y > pacmanY) && (table[y-1][x] != 0)){
+        this->setPositionMove(1);
+        return;
+    }
+
+    if((y < pacmanY) && (table[y+1][x] != 0)){
+        this->setPositionMove(3);
+        return;
+    }
+
     // cout << "ValorX: \n" << pacmanX << "    -   ValorY: " << pacmanY << endl;
     /*int biggerX, biggerY;
     bool xIsBigger, yIsBigger;

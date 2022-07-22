@@ -7,6 +7,7 @@ using namespace std;
 #define FPS 65
 #define SPEED 1
 #define PIXEL_GAME_SIZE 35
+#define GHOSTSPEED 1
 
 Game::Game() : Display(){
     queueEvent = al_create_event_queue();
@@ -135,46 +136,44 @@ void Game::loopGame(){
         }
 
         // movendo fantasmas
-        if(this->count % 3 == 0){
-            if(ghost1->getPositionMove() == 1){
-                this->ghost1->setPosY(ghost1->getPosY() - SPEED);
-            }else if(ghost1->getPositionMove() == 2){
-                ghost1->setPosX(ghost1->getPosX() + SPEED);
-            }else if(ghost1->getPositionMove() == 3){
-                ghost1->setPosY(ghost1->getPosY() + SPEED);
-            }else if(ghost1->getPositionMove() == 4){
-                ghost1->setPosX(ghost1->getPosX() - SPEED);
-            }
+        if(ghost1->getPositionMove() == 1){
+            this->ghost1->setPosY(ghost1->getPosY() - GHOSTSPEED);
+        }else if(ghost1->getPositionMove() == 2){
+            ghost1->setPosX(ghost1->getPosX() + GHOSTSPEED);
+        }else if(ghost1->getPositionMove() == 3){
+            ghost1->setPosY(ghost1->getPosY() + GHOSTSPEED);
+        }else if(ghost1->getPositionMove() == 4){
+            ghost1->setPosX(ghost1->getPosX() - GHOSTSPEED);
+        }
 
-            if(ghost2->getPositionMove() == 1){
-                this->ghost2->setPosY(ghost2->getPosY() - SPEED);
-            }else if(ghost2->getPositionMove() == 2){
-                ghost2->setPosX(ghost2->getPosX() + SPEED);
-            }else if(ghost2->getPositionMove() == 3){
-                ghost2->setPosY(ghost2->getPosY() + SPEED);
-            }else if(ghost2->getPositionMove() == 4){
-                ghost2->setPosX(ghost2->getPosX() - SPEED);
-            }
+        if(ghost2->getPositionMove() == 1){
+            this->ghost2->setPosY(ghost2->getPosY() - GHOSTSPEED);
+        }else if(ghost2->getPositionMove() == 2){
+            ghost2->setPosX(ghost2->getPosX() + GHOSTSPEED);
+        }else if(ghost2->getPositionMove() == 3){
+            ghost2->setPosY(ghost2->getPosY() + GHOSTSPEED);
+        }else if(ghost2->getPositionMove() == 4){
+            ghost2->setPosX(ghost2->getPosX() - GHOSTSPEED);
+        }
 
-            if(ghost3->getPositionMove() == 1){
-                this->ghost3->setPosY(ghost3->getPosY() - SPEED);
-            }else if(ghost3->getPositionMove() == 2){
-                ghost3->setPosX(ghost3->getPosX() + SPEED);
-            }else if(ghost3->getPositionMove() == 3){
-                ghost3->setPosY(ghost3->getPosY() + SPEED);
-            }else if(ghost3->getPositionMove() == 4){
-                ghost3->setPosX(ghost3->getPosX() - SPEED);
-            }
+        if(ghost3->getPositionMove() == 1){
+            this->ghost3->setPosY(ghost3->getPosY() - GHOSTSPEED);
+        }else if(ghost3->getPositionMove() == 2){
+            ghost3->setPosX(ghost3->getPosX() + GHOSTSPEED);
+        }else if(ghost3->getPositionMove() == 3){
+            ghost3->setPosY(ghost3->getPosY() + GHOSTSPEED);
+        }else if(ghost3->getPositionMove() == 4){
+            ghost3->setPosX(ghost3->getPosX() - GHOSTSPEED);
+        }
 
-            if(ghost4->getPositionMove() == 1){
-                this->ghost4->setPosY(ghost4->getPosY() - SPEED);
-            }else if(ghost4->getPositionMove() == 2){
-                ghost4->setPosX(ghost4->getPosX() + SPEED);
-            }else if(ghost4->getPositionMove() == 3){
-                ghost4->setPosY(ghost4->getPosY() + SPEED);
-            }else if(ghost4->getPositionMove() == 4){
-                ghost4->setPosX(ghost4->getPosX() - SPEED);
-            }
+        if(ghost4->getPositionMove() == 1){
+            this->ghost4->setPosY(ghost4->getPosY() - GHOSTSPEED);
+        }else if(ghost4->getPositionMove() == 2){
+            ghost4->setPosX(ghost4->getPosX() + GHOSTSPEED);
+        }else if(ghost4->getPositionMove() == 3){
+            ghost4->setPosY(ghost4->getPosY() + GHOSTSPEED);
+        }else if(ghost4->getPositionMove() == 4){
+            ghost4->setPosX(ghost4->getPosX() - GHOSTSPEED);
         }
 
         // checando colisao
