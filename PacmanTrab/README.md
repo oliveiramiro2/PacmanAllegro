@@ -1,6 +1,4 @@
-perdi muito tempo sem sucesso tentando corrigir a movimentação
-e esqueci de implementar o placar.
-
-faltou o placar e a movimentação dessa entrega.
+Repositório git:
+https://github.com/oliveiramiro2/PacmanAllegro
 
 Ramiro Mares de Oliveira 6312
