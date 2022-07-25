@@ -15,6 +15,7 @@ public:
     void changeDirection(int table[19][19], int x, int y, int pacmanX, int pacmanY);
     void setTypeStalker(int value);
     int getTypeStalker();
+    int xRest, yRest;
     Ghost(int type);
     ~Ghost();
 private:

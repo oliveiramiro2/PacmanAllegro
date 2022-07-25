@@ -249,7 +249,7 @@ bool Game::checkNextSQM(int action, int checkNextMove){
         }
 
         if(Entities::getPositionMove() == 1){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
+            if(Rules::tableSQMS[(Display::getPosY()/PIXEL_GAME_SIZE)][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }else
                 return false;
@@ -266,7 +266,7 @@ bool Game::checkNextSQM(int action, int checkNextMove){
             else
                 return false;
         }else if(Entities::getPositionMove() == 4){
-            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX())/PIXEL_GAME_SIZE] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
+            if(Rules::tableSQMS[(Display::getPosY())/PIXEL_GAME_SIZE][(Display::getPosX()/PIXEL_GAME_SIZE)] >= 1 && (Display::getPosY() % 35 == 0 || Display::getPosX() % 35 == 0)){
                 return true;
             }
             else

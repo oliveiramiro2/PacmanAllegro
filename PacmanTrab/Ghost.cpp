@@ -69,27 +69,40 @@ void Ghost::changeDirection(int table[19][19], int x, int y, int pacmanX, int pa
         return;
     }
 
-
-
-
-    if((x > pacmanX) && (table[y][x-1] != 0)){                                                              // checa se o fantasma esta numa posicao maior no eixo x se e possivel diminuir
-        this->setPositionMove(4);
-        return;
+    if(x > pacmanX){                                                                                        // X do fantasma maior que do pacman?
+        xRest = x - pacmanX;
+    }else if(x < pacmanX){                                                                                  // X do pacman maior que do fantasma
+        xRest = pacmanX - x;
     }
 
-    if((x < pacmanX) && (table[y][x+1] != 0)){                                                              // checa se o fantasma esta numa posicao menor no eixo x se e possivel aumentar
-        this->setPositionMove(2);
-        return;
+    if(y > pacmanY){                                                                                        // Y do fantasma maior que do pacman?
+        yRest = y - pacmanY;
+    }else if(yRest < pacmanY){                                                                              // Y do pacman maior que do fantasma
+        yRest = pacmanY - y;
     }
 
-    if((y > pacmanY) && (table[y-1][x] != 0)){                                                              // checa se o fantasma esta numa posicao maior no eixo y se e possivel diminuir
-        this->setPositionMove(1);
-        return;
+    if(xRest < yRest){                                                                                      // a diferenca do X é menor que a do Y?
+        if((x > pacmanX) && (table[y][x-1] != 0)){                                                              // checa se o fantasma esta numa posicao maior no eixo x se e possivel diminuir
+            this->setPositionMove(4);
+            return;
+        }
+
+        if((x < pacmanX) && (table[y][x+1] != 0)){                                                              // checa se o fantasma esta numa posicao menor no eixo x se e possivel aumentar
+            this->setPositionMove(2);
+            return;
+        }
     }
 
-    if((y < pacmanY) && (table[y+1][x] != 0)){                                                              // checa se o fantasma esta numa posicao menor no eixo y se e possivel aumentar
-        this->setPositionMove(3);
-        return;
+    if(xRest > yRest){                                                                                      // a diferenca do X é maior que a do Y?
+        if((y > pacmanY) && (table[y-1][x] != 0)){                                                              // checa se o fantasma esta numa posicao maior no eixo y se e possivel diminuir
+            this->setPositionMove(1);
+            return;
+        }
+
+        if((y < pacmanY) && (table[y+1][x] != 0)){                                                              // checa se o fantasma esta numa posicao menor no eixo y se e possivel aumentar
+            this->setPositionMove(3);
+            return;
+        }
     }
 
     this->setPositionMove((rand() % 4) + 1);                                                                // caso tudo der errado a posicao sera aleatoria
